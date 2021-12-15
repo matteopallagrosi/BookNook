@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -21,12 +18,17 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
 import java.io.IOException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Objects;
+
 
 public class ConsultationUIController {
 
+
     @FXML
     void onSearchClick(MouseEvent event) {
+
         //compare la lista delle biblioteche con disponiilità
         ListView<String> libraries = new ListView<>();
         //recupera librerie con disponibilità e le inserisce nella lista view
@@ -45,10 +47,11 @@ public class ConsultationUIController {
         libraries.setStyle("-fx-focus-color: transparent;");
         libraries.setFixedCellSize(43);
         libraries.getStylesheets().add(Objects.requireNonNull(getClass().getResource("list.css")).toExternalForm());
+        paneCenter.setVisible(true);
 
-        //cambia schermata -->
+        //cambia schermata quando clicco sulla libreria -->
         libraries.setOnMouseClicked(event1 -> {
-                System.out.println("clicked on " + libraries.getSelectionModel().getSelectedItem());
+            System.out.println("clicked on " + libraries.getSelectionModel().getSelectedItem());
             Parent root = null;
             try {
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("consultationdetails-view.fxml")));
@@ -61,8 +64,15 @@ public class ConsultationUIController {
             root.requestFocus();
             DatePicker picker = (DatePicker)scene.lookup("#datePicker");
             picker.setStyle("-fx-focus-color: transparent;");
+            picker.setDayCellFactory(p -> new DateCell() {
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    LocalDate today = LocalDate.now();
+
+                    setDisable(empty || date.compareTo(today) < 0 || date.getDayOfWeek() == DayOfWeek.SUNDAY);
+                }
+            });
         });
-        paneCenter.setVisible(true);
     }
 
 
@@ -77,9 +87,11 @@ public class ConsultationUIController {
     //selezione della data
     @FXML
     void onDateClick(ActionEvent event) {
+        System.out.println("OK");
         //mostra gli orari disponibili per quella data
         DatePicker picker = (DatePicker)event.getSource();
         ListView<String> timeTable = (ListView<String>) picker.getScene().lookup("#timeTable");
+        //mostra soltanto gli orari disponibili
         ObservableList<String> items = FXCollections.observableArrayList("8.00", "9.30", "10.15", "10.30",
                 "11.00", "11.30", "15.15", "16.30");
         timeTable.setItems(items);
