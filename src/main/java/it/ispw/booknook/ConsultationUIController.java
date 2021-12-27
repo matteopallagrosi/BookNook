@@ -1,5 +1,6 @@
 package it.ispw.booknook;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,10 +18,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
+
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Objects;
+
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 
 public class ConsultationUIController {
@@ -51,6 +56,7 @@ public class ConsultationUIController {
 
         //cambia schermata quando clicco sulla libreria -->
         libraries.setOnMouseClicked(event1 -> {
+
             System.out.println("clicked on " + libraries.getSelectionModel().getSelectedItem());
             Parent root = null;
             try {
@@ -62,6 +68,9 @@ public class ConsultationUIController {
             scene.setRoot(root);
             assert root != null;
             root.requestFocus();
+            WebView webView = (WebView)scene.lookup("#map");
+            webView.getEngine().load("https://www.google.com/maps");
+
             DatePicker picker = (DatePicker)scene.lookup("#datePicker");
             picker.setStyle("-fx-focus-color: transparent;");
             picker.setDayCellFactory(p -> new DateCell() {
