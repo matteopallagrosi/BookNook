@@ -25,23 +25,42 @@
                             </font>
                         </Label>
                </center>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="backBtn" fitHeight="37.0" fitWidth="91.0" layoutX="51.0" layoutY="29.0" onMouseClicked="#onBackClick" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="51.0">
+                           <image>
+                              <Image url="@back.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <right>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </right>
             </BorderPane>
             </top>
          <left>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="301.0" BorderPane.alignment="CENTER">
                <children>
-                  <DatePicker fx:id="datePicker" editable="false" layoutX="63.0" layoutY="67.0" onAction="#onDateClick" prefHeight="34.0" prefWidth="175.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="63.0" />
-                  <Label layoutX="63.0" layoutY="36.0" text="Select a day" AnchorPane.leftAnchor="63.0" AnchorPane.topAnchor="36.0">
+                  <DatePicker fx:id="datePicker" editable="false" layoutX="63.0" layoutY="47.0" onAction="#onDateClick" prefHeight="34.0" prefWidth="175.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="47.0" />
+                  <Label layoutX="63.0" layoutY="19.0" text="Select date" AnchorPane.leftAnchor="63.0" AnchorPane.topAnchor="19.0">
                      <font>
                         <Font name="Roboto Medium" size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="timeTable" layoutX="63.0" layoutY="168.0" prefHeight="200.0" prefWidth="171.0" stylesheets="@timeList.css" AnchorPane.leftAnchor="63.0" />
-                  <Label layoutX="63.0" layoutY="138.0" text="Seleziona orario" AnchorPane.leftAnchor="63.0">
+                  <ListView fx:id="timeTable" layoutX="63.0" layoutY="127.0" prefHeight="200.0" prefWidth="171.0" stylesheets="@timeList.css" AnchorPane.leftAnchor="63.0" AnchorPane.topAnchor="127.0" />
+                  <Label layoutX="63.0" layoutY="99.0" text="Select time" AnchorPane.leftAnchor="63.0" AnchorPane.topAnchor="99.0">
                      <font>
                         <Font name="Roboto Medium" size="18.0" />
                      </font>
                   </Label>
+                  <Button fx:id="confirmBtn" layoutX="63.0" layoutY="350.0" mnemonicParsing="false" onAction="#onConfirmClick" style="-fx-background-color: #e9bf8e; -fx-background-radius: 8; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" text="Confirm" textFill="WHITE" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="350.0">
+                     <font>
+                        <Font name="Roboto Medium" size="15.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </left>
@@ -70,7 +89,7 @@
                                 <Font name="Roboto Medium" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="consultBtn" layoutX="136.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Consultation" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="30.0">
+                        <Button fx:id="consultBtn" layoutX="136.0" layoutY="30.0" mnemonicParsing="false" onAction="#onConsultationClick" style="-fx-background-color: transparent;" text="Consultation" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="30.0">
                             <font>
                                 <Font name="Roboto Medium" size="18.0" />
                             </font>
