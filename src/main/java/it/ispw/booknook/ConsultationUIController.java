@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -24,10 +25,12 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 
 public class ConsultationUIController {
@@ -111,6 +114,11 @@ public class ConsultationUIController {
         ObservableList<String> times = FXCollections.observableArrayList("8.00", "9.30", "10.15", "10.30",
                 "11.00", "11.30", "15.15", "16.30");
         timeTable.setItems(times);
+        timeTable.setOnMouseClicked(event1 -> {
+            Button confirm = (Button)((Node)event1.getSource()).getParent().lookup("#confirmBtn");
+            confirm.setDisable(false);
+        });
+
     }
 
 
@@ -135,19 +143,30 @@ public class ConsultationUIController {
     }
 
     @FXML
-    void onConfirmClick(ActionEvent event) {
-        System.out.println("Click");
-        //compare il popup in caso di successo
-        Popup popup = new Popup();
-        Label label = new Label("This is a Popup");
-        label.setMinWidth(80);
-        label.setMinHeight(50);
-        label.setStyle(" -fx-background-color: white;");
-        popup.getContent().add(label);
+    void onConfirmClick(ActionEvent event) throws IOException {
+        //apre un dialog per la conferma della prenotazione
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Confirm consultation");
+        ButtonType type = new ButtonType("Confirm", ButtonBar.ButtonData.OK_DONE);
+        dialog.setContentText("Please confirm your reservation.\nYou will receive an email with the details.");
+        dialog.getDialogPane().setStyle("-fx-font-size: 15px;" +
+                "-fx-font-family: Roboto ");
+        dialog.getDialogPane().getButtonTypes().add(type);
+        ButtonBar buttonBar = (ButtonBar)dialog.getDialogPane().lookup(".button-bar");
+        buttonBar.getButtons().forEach(b -> b.setStyle("-fx-background-color: #e9bf8e;" +
+                "-fx-background-radius: 8;" +
+                "-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" +
+                "-fx-text-fill: white;" +
+                "-fx-font-family: 'Roboto Medium'"));
 
-
-        popup.show(((Button)event.getSource()).getScene().getWindow());
-
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get() == type) {
+            //conferma la prenotazione, invia email, riporta alla schermata iniziale
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("consultation-view.fxml")));
+            Scene scene = ((Button)(event.getSource())).getScene();
+            scene.setRoot(root);
+            root.requestFocus();
+        }
 
     }
 
