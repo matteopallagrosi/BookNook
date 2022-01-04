@@ -41,7 +41,7 @@ public class ResultsController implements Initializable {
         bookList.setItems(observableList);
         bookList.setStyle("-fx-focus-color: transparent;");
         bookList.getStylesheets().add(Objects.requireNonNull(getClass().getResource("bookList.css")).toExternalForm());
-        bookList.setFocusTraversable(false);
+        //bookList.setFocusTraversable(false);
         bookList.setCellFactory(listView -> new ListViewCell());
     }
 

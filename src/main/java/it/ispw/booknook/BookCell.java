@@ -1,9 +1,10 @@
 package it.ispw.booknook;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -16,7 +17,7 @@ public class BookCell {
     private AnchorPane cell;
 
     @FXML
-    private Button addToListBtn;
+    private MenuButton addToListBtn;
 
     @FXML
     private Label author;
@@ -48,6 +49,19 @@ public class BookCell {
         {
             throw new RuntimeException(e);
         }
+
+        //inizializzare le liste dei preferiti
+        setFavorites();
+    }
+
+    private void setFavorites() {
+        //recuperare liste effettive
+        MenuItem list1 = new MenuItem("Books on loan");
+        MenuItem list2 = new MenuItem("Books I liked");
+        MenuItem list3 = new MenuItem("Want to read");
+        addToListBtn.getItems().add(list1);
+        addToListBtn.getItems().add(list2);
+        addToListBtn.getItems().add(list3);
     }
 
     public void setInfo(Book book)
