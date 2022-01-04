@@ -11,3 +11,7 @@ N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 X
 (src/main/java/it/ispw/booknook/Main.java,f\5\f57b18e048f60b8348fcd50107e67330999b145c
+l
+<src/main/java/it/ispw/booknook/ConsultationUIController.java,9\9\99252733470c99d2e4816dd6764feba31bceb39e
+e
+5src/main/java/it/ispw/booknook/LoginUIController.java,e\5\e582502c8d69e6b2dd9f052f2b044fee70596ae7
