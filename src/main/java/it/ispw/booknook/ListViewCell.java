@@ -8,6 +8,7 @@ public class ListViewCell extends ListCell<Book>
     public void updateItem(Book book, boolean empty)
     {
         super.updateItem(book,empty);
+
         if(book != null)
         {
             BookCell data = new BookCell();
