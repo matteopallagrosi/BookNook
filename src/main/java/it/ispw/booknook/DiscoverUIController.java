@@ -47,6 +47,11 @@ public class DiscoverUIController {
     }
 
 
-
-
+    @FXML
+    void onMyListClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("myLists-view.fxml")));
+        Scene scene = ((Node)(event.getSource())).getScene();
+        scene.setRoot(root);
+        root.requestFocus();
+    }
 }
