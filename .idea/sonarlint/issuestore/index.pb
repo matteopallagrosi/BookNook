@@ -9,8 +9,6 @@ G
 BookNook.iml,1\5\15a665a5f7e63892fb57b5ccbf8479573b0f2d6d
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
-h
-8src/main/java/it/ispw/booknook/DiscoverUIController.java,f\9\f99429146650e508e7ba8c61af903dd4bc67a170
 e
 5src/main/java/it/ispw/booknook/LoginUIController.java,e\5\e582502c8d69e6b2dd9f052f2b044fee70596ae7
 f

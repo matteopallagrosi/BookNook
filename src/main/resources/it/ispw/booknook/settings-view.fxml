@@ -42,7 +42,7 @@
                 </BorderPane>
             </top>
             <left>
-                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="301.0" BorderPane.alignment="CENTER">
+                <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="301.0" BorderPane.alignment="CENTER">
                <children>
                   <Rectangle fx:id="accountBtn" arcHeight="8.0" arcWidth="8.0" disable="true" fill="#8a8a8a65" height="28.0" layoutX="62.0" layoutY="95.0" onDragDetected="#onAccountSettingsClick" stroke="#8a8a8a67" strokeType="INSIDE" strokeWidth="0.0" width="174.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="95.0" />
                   <Rectangle fx:id="profSettingsBtn" arcHeight="8.0" arcWidth="8.0" fill="#8a8a8a67" height="28.0" layoutX="62.0" layoutY="143.0" onDragDetected="#onProfileSettingsClick" stroke="#8a8a8a66" strokeType="INSIDE" strokeWidth="0.0" width="175.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="143.0" />
@@ -143,7 +143,7 @@
                     <children>
                         <ImageView fx:id="profileBtn" fitHeight="60.0" fitWidth="60.0" layoutX="286.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="18.0">
                             <image>
-                                <Image url="@account_circle_24dp.png" />
+                                <Image url="@account_circle_black_24dp%201.png" />
                             </image>
                         </ImageView>
                         <Button fx:id="myListBtn" layoutX="171.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="My List" textFill="#8c8c8c" AnchorPane.rightAnchor="116.0" AnchorPane.topAnchor="30.0">

@@ -36,4 +36,17 @@ public class DiscoverUIController {
         root.requestFocus();
         //riempire la lista dei libri risultanti nella schermata successiva
     }
+
+
+    @FXML
+    void onProfileClick(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("settings-view.fxml")));
+        Scene scene = ((Node)(event.getSource())).getScene();
+        scene.setRoot(root);
+        root.requestFocus();
+    }
+
+
+
+
 }
