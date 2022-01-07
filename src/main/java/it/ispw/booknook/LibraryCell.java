@@ -49,7 +49,28 @@ public class LibraryCell {
             public void handle(ActionEvent actionEvent) {
                 if (borrowBtn.getText().equals("Borrow")) {
                     System.out.println("Borrow");
-                    //apri dialog per scelta metodo consegna
+                    String[] choices= {"In-library pickup", "Home delivery"};
+                    ChoiceDialog d = new ChoiceDialog(choices[0], choices);
+                    d.setTitle("Delivery method");
+                    d.setHeaderText("Delivery method");
+                    d.setContentText("Choose your delivery method");
+                    d.getDialogPane().setStyle("-fx-font-size: 15px;" +
+                            "-fx-font-family: Roboto ");
+                    ButtonBar buttonBar = (ButtonBar)d.getDialogPane().lookup(".button-bar");
+                    ((Button) d.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
+                    buttonBar.getButtons().forEach(b -> b.setStyle("-fx-background-color: #e9bf8e;" +
+                            "-fx-background-radius: 8;" +
+                            "-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" +
+                            "-fx-text-fill: white;" +
+                            "-fx-font-family: 'Roboto Medium'"));
+
+                    Optional<String> result =  d.showAndWait();
+                    if (result.isPresent()) {
+                        //result contiene la stringa In-libraryPickup o homedelivery
+                        //se homedelivery apre pagina metodo di consegna
+                        //se pickup informa sui tempi di ritiro
+                        System.out.println(result.get());
+                    }
                 }
                 else {
                     System.out.println("Reserve");
