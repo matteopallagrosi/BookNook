@@ -143,7 +143,7 @@
                     <children>
                         <ImageView fx:id="profileBtn" fitHeight="60.0" fitWidth="60.0" layoutX="286.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="18.0">
                             <image>
-                                <Image url="@account_circle_black_24dp%201.png" />
+                                <Image url="@account_circle_black_24dp.png" />
                             </image>
                         </ImageView>
                         <Button fx:id="myListBtn" layoutX="171.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="My List" textFill="#8c8c8c" AnchorPane.rightAnchor="116.0" AnchorPane.topAnchor="30.0">
