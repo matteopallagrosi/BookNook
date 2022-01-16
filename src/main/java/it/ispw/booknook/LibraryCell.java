@@ -66,10 +66,37 @@ public class LibraryCell {
 
                     Optional<String> result =  d.showAndWait();
                     if (result.isPresent()) {
+                        System.out.println(result.get());
                         //result contiene la stringa In-libraryPickup o homedelivery
                         //se homedelivery apre pagina metodo di consegna
                         //se pickup informa sui tempi di ritiro
-                        System.out.println(result.get());
+                        switch(result.get()) {
+                            case "In-library pickup": {
+                                Dialog<ButtonType> dialogPickup = new Dialog<ButtonType>();
+                                dialogPickup.setTitle("In-library Pickup");
+                                dialogPickup.setContentText("You can pick up your book within three days.");
+                                ButtonType confirm = new ButtonType("Confirm", ButtonBar.ButtonData.OK_DONE);
+                                ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+                                dialogPickup.getDialogPane().getButtonTypes().add(confirm);
+                                dialogPickup.getDialogPane().getButtonTypes().add(cancel);
+                                dialogPickup.getDialogPane().setStyle("-fx-font-size: 15px;" +
+                                        "-fx-font-family: Roboto ");
+                                buttonBar.getButtons().forEach(b -> b.setStyle("-fx-background-color: #e9bf8e;" +
+                                        "-fx-background-radius: 8;" +
+                                        "-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" +
+                                        "-fx-text-fill: white;" +
+                                        "-fx-font-family: 'Roboto Medium'"));
+                                if (dialogPickup.showAndWait().get() == confirm) {
+                                    System.out.println("Confermato");
+                                    //conferma ordine con ritiro in libreria
+                                }
+                                break;
+                            }
+                            case "Home delivery": {
+                                //passa a schermata con informazioni di spedizione
+
+                            }
+                        }
                     }
                 }
                 else {

@@ -5,12 +5,19 @@ public class Book {
     private String author;
     private String tag1;
     private String tag2;
+    public String expireData;
 
     public Book(String title, String author, String tag1, String tag2) {
         this.title = title;
         this.author = author;
         this.tag1 = tag1;
         this.tag2 = tag2;
+    }
+
+    public Book(String title, String author, String expireData) {
+        this.title = title;
+        this.author = author;
+        this.expireData = expireData;
     }
 
     public String getAuthor() {
