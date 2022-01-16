@@ -21,7 +21,13 @@ G
 .idea/libraries/lib.xml,5\6\563a23e064e6fdd2d09bd0c2d99ef456aff71a31
 H
 sonar-project.properties,2\5\2538046035efb77ecc44e1fd2eec1e2641594d4c
-h
-8src/main/java/it/ispw/booknook/DiscoverUIController.java,f\9\f99429146650e508e7ba8c61af903dd4bc67a170
 s
 Csrc/main/java/it/ispw/booknook/ConsultationDetailsUIController.java,2\2\2218baca5adca576ed5a92adc11aeb0d73e9a7f2
+m
+=src/main/java/it/ispw/booknook/BorrowDetailsUIController.java,a\d\adb1af76e5a5d508a09cdde595b07776a7408e1c
+c
+3src/main/java/it/ispw/booknook/LibraryViewCell.java,0\2\0269f1fb75ac7b471ace8a847d3edc31bcea698e
+`
+0src/main/java/it/ispw/booknook/ListViewCell.java,b\b\bb3b6425ad0f0ab91aadea0ad3985538d5046f59
+o
+?src/main/java/it/ispw/booknook/ProfileSettingsUIController.java,f\b\fb72191e4d2d03b16f505bcbfc8d3753be832009

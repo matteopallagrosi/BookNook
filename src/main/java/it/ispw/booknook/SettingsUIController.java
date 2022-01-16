@@ -10,6 +10,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +21,17 @@ import java.util.ResourceBundle;
 public class SettingsUIController implements Initializable {
     @FXML
     private BorderPane currentSettingsPane;
+
+    @FXML
+    private Rectangle accountBtn;
+
+    @FXML
+    private Rectangle profSettingsBtn;
+
+    @FXML
+    private Rectangle deleteBtn;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -32,6 +45,8 @@ public class SettingsUIController implements Initializable {
 
     @FXML
     void onAccountSettingsClick(MouseEvent event) throws IOException {
+        accountBtn.setFill(Color.web("#e9bf8e"));
+        profSettingsBtn.setFill(Color.web("#8a8a8a66"));
         AnchorPane accountPane = FXMLLoader.load(getClass().getResource("accountsettings-view.fxml"));
         currentSettingsPane.setCenter(accountPane);
 
@@ -44,6 +59,8 @@ public class SettingsUIController implements Initializable {
 
     @FXML
     void onProfileSettingsClick(MouseEvent event) throws IOException {
+        profSettingsBtn.setFill(Color.web("#e9bf8e"));
+        accountBtn.setFill(Color.web("#8a8a8a66"));
         AnchorPane profilePane = FXMLLoader.load(getClass().getResource("profile-settings-view.fxml"));
         currentSettingsPane.setCenter(profilePane);
     }

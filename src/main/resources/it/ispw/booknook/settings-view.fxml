@@ -41,8 +41,8 @@
             <left>
                 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="301.0" BorderPane.alignment="CENTER">
                <children>
-                  <Rectangle fx:id="accountBtn" arcHeight="8.0" arcWidth="8.0" disable="true" fill="#8a8a8a65" height="28.0" layoutX="62.0" layoutY="95.0" stroke="#8a8a8a67" strokeType="INSIDE" strokeWidth="0.0" width="174.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="95.0" />
-                  <Rectangle fx:id="profSettingsBtn" arcHeight="8.0" arcWidth="8.0" fill="#8a8a8a67" height="28.0" layoutX="62.0" layoutY="143.0" stroke="#8a8a8a66" strokeType="INSIDE" strokeWidth="0.0" width="175.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="143.0" />
+                  <Rectangle fx:id="accountBtn" arcHeight="8.0" arcWidth="8.0" disable="true" fill="#e9bf8e" height="28.0" layoutX="62.0" layoutY="95.0" stroke="#e9bf8e66" strokeType="INSIDE" strokeWidth="0.0" width="174.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="95.0" />
+                  <Rectangle fx:id="profSettingsBtn" arcHeight="8.0" arcWidth="8.0" fill="#8a8a8a66" height="28.0" layoutX="62.0" layoutY="143.0" stroke="#8a8a8a66" strokeType="INSIDE" strokeWidth="0.0" width="175.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="143.0" />
                   <Rectangle fx:id="deleteBtn" arcHeight="8.0" arcWidth="8.0" fill="#8a8a8a66" height="28.0" layoutX="61.0" layoutY="191.0" stroke="#8a8a8a66" strokeType="INSIDE" strokeWidth="0.0" width="175.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="191.0" />
                   <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="70.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
                      <image>

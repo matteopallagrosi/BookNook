@@ -94,7 +94,15 @@ public class LibraryCell {
                             }
                             case "Home delivery": {
                                 //passa a schermata con informazioni di spedizione
-
+                                Parent root = null;
+                                try {
+                                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("deliverydetails-view.fxml")));
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                Scene scene = ((Button)(actionEvent.getSource())).getScene();
+                                scene.setRoot(root);
+                                root.requestFocus();
                             }
                         }
                     }
