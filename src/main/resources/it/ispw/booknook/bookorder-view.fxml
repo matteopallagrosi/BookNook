@@ -81,6 +81,7 @@
                               <Font name="Roboto Medium" size="18.0" />
                            </font>
                         </Label>
+                        <Label layoutX="616.0" layoutY="90.0" prefHeight="101.0" prefWidth="154.0" text="quando aggiungiamo un libro alla lista dovremmo cambiare il bottone &quot;Add to list&quot; con &quot;added&quot;" wrapText="true" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -109,12 +110,12 @@
             <left>
                 <AnchorPane prefHeight="90.0" prefWidth="370.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="discoverBtn" layoutX="37.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Discover " AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="30.0">
+                        <Button fx:id="discoverBtn" layoutX="37.0" layoutY="30.0" mnemonicParsing="false" onAction="#onDiscoverClick" style="-fx-background-color: transparent;" text="Discover " AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="30.0">
                             <font>
                                 <Font name="Roboto Medium" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="consultBtn" layoutX="136.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Consultation" textFill="#8c8c8c" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="30.0">
+                        <Button fx:id="consultBtn" layoutX="136.0" layoutY="30.0" mnemonicParsing="false" onAction="#onConsultationClick" style="-fx-background-color: transparent;" text="Consultation" textFill="#8c8c8c" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="30.0">
                             <font>
                                 <Font name="Roboto Medium" size="18.0" />
                             </font>
@@ -131,12 +132,12 @@
             <right>
                 <AnchorPane prefHeight="90.0" prefWidth="370.0" BorderPane.alignment="CENTER">
                     <children>
-                        <ImageView fx:id="profileBtn" fitHeight="60.0" fitWidth="60.0" layoutX="286.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="18.0">
+                        <ImageView fx:id="profileBtn" fitHeight="60.0" fitWidth="60.0" layoutX="286.0" layoutY="18.0" onDragDetected="#onProfileClick" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="18.0">
                             <image>
                                 <Image url="@account_circle_24dp.png" />
                             </image>
                         </ImageView>
-                        <Button fx:id="myListBtn" layoutX="171.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="My List" textFill="#8c8c8c" AnchorPane.rightAnchor="116.0" AnchorPane.topAnchor="30.0">
+                        <Button fx:id="myListBtn" layoutX="171.0" layoutY="30.0" mnemonicParsing="false" onAction="#onMyListClick" style="-fx-background-color: transparent;" text="My List" textFill="#8c8c8c" AnchorPane.rightAnchor="116.0" AnchorPane.topAnchor="30.0">
                             <font>
                                 <Font name="Roboto Medium" size="18.0" />
                             </font>

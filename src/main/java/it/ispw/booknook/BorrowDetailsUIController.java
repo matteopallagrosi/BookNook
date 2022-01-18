@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -68,7 +69,28 @@ public class BorrowDetailsUIController implements Initializable {
         root.requestFocus();
     }
 
-    public void onBackClick(MouseEvent mouseEvent) {
-        //TODO
+    @FXML
+    void onProfileClick(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("settings-view.fxml")));
+        Scene scene = ((Node)(event.getSource())).getScene();
+        scene.setRoot(root);
+        root.requestFocus();
+    }
+
+
+    @FXML
+    void onMyListClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("myLists-view.fxml")));
+        Scene scene = ((Node)(event.getSource())).getScene();
+        scene.setRoot(root);
+        root.requestFocus();
+    }
+
+    @FXML
+    public void onBackClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("home-page.fxml")));
+        Scene scene = ((Button)(event.getSource())).getScene();
+        scene.setRoot(root);
+        root.requestFocus();
     }
 }
