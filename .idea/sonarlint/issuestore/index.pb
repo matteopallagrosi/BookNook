@@ -11,8 +11,6 @@ e
 5src/main/java/it/ispw/booknook/LoginUIController.java,e\5\e582502c8d69e6b2dd9f052f2b044fee70596ae7
 f
 6src/main/java/it/ispw/booknook/SignupUIController.java,0\8\08a5e70cd6763b44cca807c39102aa2edd3a9ac3
-l
-<src/main/java/it/ispw/booknook/ConsultationUIController.java,9\9\99252733470c99d2e4816dd6764feba31bceb39e
 X
 (src/main/java/it/ispw/booknook/Main.java,f\5\f57b18e048f60b8348fcd50107e67330999b145c
 [
@@ -21,8 +19,6 @@ G
 .idea/libraries/lib.xml,5\6\563a23e064e6fdd2d09bd0c2d99ef456aff71a31
 H
 sonar-project.properties,2\5\2538046035efb77ecc44e1fd2eec1e2641594d4c
-s
-Csrc/main/java/it/ispw/booknook/ConsultationDetailsUIController.java,2\2\2218baca5adca576ed5a92adc11aeb0d73e9a7f2
 m
 =src/main/java/it/ispw/booknook/BorrowDetailsUIController.java,a\d\adb1af76e5a5d508a09cdde595b07776a7408e1c
 c
@@ -31,3 +27,19 @@ c
 0src/main/java/it/ispw/booknook/ListViewCell.java,b\b\bb3b6425ad0f0ab91aadea0ad3985538d5046f59
 o
 ?src/main/java/it/ispw/booknook/ProfileSettingsUIController.java,f\b\fb72191e4d2d03b16f505bcbfc8d3753be832009
+e
+5src/main/java/it/ispw/booknook/FavoritesViewCell.java,c\4\c4dd0de14661b4b3f972ea6667a4a2be3f0c3922
+a
+1src/main/java/it/ispw/booknook/FavoritesCell.java,2\b\2b9f1fadaf557de26c019a27df3921e40d9b0763
+\
+,src/main/java/it/ispw/booknook/BookCell.java,6\4\6438103cc4b352a2309c2bf12755e8b37cd52fb4
+o
+?src/main/java/it/ispw/booknook/DeliveryDetailsUIController.java,6\6\66eae89bab226b6457f760faeb42b59b60b8ed88
+_
+/src/main/java/it/ispw/booknook/LibraryCell.java,f\c\fcd55017e2e5416faaf2e79d72c30c0ddaaf8155
+g
+7src/main/java/it/ispw/booknook/MyListsUIController.java,c\2\c28c2a1bb7cc9a4ee4dd1345211c2913f0934b48
+h
+8src/main/java/it/ispw/booknook/DiscoverUIController.java,f\9\f99429146650e508e7ba8c61af903dd4bc67a170
+e
+5src/main/java/it/ispw/booknook/ResultsController.java,7\9\79c9a9c892c9d66dd24525ae7f4dd0f506d75930
