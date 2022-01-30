@@ -25,8 +25,6 @@ c
 3src/main/java/it/ispw/booknook/LibraryViewCell.java,0\2\0269f1fb75ac7b471ace8a847d3edc31bcea698e
 `
 0src/main/java/it/ispw/booknook/ListViewCell.java,b\b\bb3b6425ad0f0ab91aadea0ad3985538d5046f59
-o
-?src/main/java/it/ispw/booknook/ProfileSettingsUIController.java,f\b\fb72191e4d2d03b16f505bcbfc8d3753be832009
 e
 5src/main/java/it/ispw/booknook/FavoritesViewCell.java,c\4\c4dd0de14661b4b3f972ea6667a4a2be3f0c3922
 a

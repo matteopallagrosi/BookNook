@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.ispw.booknook.ClubsUIController">
     <center>
-        <BorderPane fx:id="currentSettingsPane" minHeight="-Infinity" prefHeight="300.0" prefWidth="900.0">
+        <BorderPane fx:id="currentPane" minHeight="-Infinity" prefHeight="300.0" prefWidth="900.0">
             <top>
                 <BorderPane fx:id="homePage" prefHeight="94.0" prefWidth="900.0" stylesheets="@home.css">
                     <center>
