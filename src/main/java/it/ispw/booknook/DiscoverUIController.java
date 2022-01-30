@@ -54,4 +54,14 @@ public class DiscoverUIController {
         scene.setRoot(root);
         root.requestFocus();
     }
+
+    @FXML
+    void onClubsClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("clubs-view.fxml")));
+        Scene scene = ((Node)(event.getSource())).getScene();
+        scene.setRoot(root);
+        root.requestFocus();
+    }
 }
+
+

@@ -39,7 +39,5 @@ _
 /src/main/java/it/ispw/booknook/LibraryCell.java,f\c\fcd55017e2e5416faaf2e79d72c30c0ddaaf8155
 g
 7src/main/java/it/ispw/booknook/MyListsUIController.java,c\2\c28c2a1bb7cc9a4ee4dd1345211c2913f0934b48
-h
-8src/main/java/it/ispw/booknook/DiscoverUIController.java,f\9\f99429146650e508e7ba8c61af903dd4bc67a170
 e
 5src/main/java/it/ispw/booknook/ResultsController.java,7\9\79c9a9c892c9d66dd24525ae7f4dd0f506d75930
