@@ -74,10 +74,13 @@ public class ClubsUIController implements Initializable {
     }
 
     @FXML
-    void onMyClubsClick(MouseEvent event) {
+    void onMyClubsClick(MouseEvent event) throws IOException {
         mapBtn.setFill(Color.web("#8a8a8a66"));
         topicBtn.setFill(Color.web("#8a8a8a66"));
         myClubsBtn.setFill((Color.web("#e9bf8e")));
+        AnchorPane mapPane = FXMLLoader.load(getClass().getResource("myClubs-view.fxml"));
+        currentPane.setCenter(mapPane);
+
     }
 
     @FXML
