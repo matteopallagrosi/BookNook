@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +18,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.ispw.booknook.ClubsUIController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.ispw.booknook.ClubsUIController">
     <center>
         <BorderPane fx:id="currentPane" minHeight="-Infinity" prefHeight="300.0" prefWidth="900.0">
             <top>
@@ -42,9 +49,9 @@
             <left>
                 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="301.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Rectangle fx:id="accountBtn" arcHeight="8.0" arcWidth="8.0" disable="true" fill="#e9bf8e" height="28.0" layoutX="61.0" layoutY="80.0" stroke="#e9bf8e66" strokeType="INSIDE" strokeWidth="0.0" width="174.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="80.0" />
-                        <Rectangle fx:id="profSettingsBtn" arcHeight="8.0" arcWidth="8.0" fill="#8a8a8a66" height="28.0" layoutX="62.0" layoutY="126.0" stroke="#8a8a8a66" strokeType="INSIDE" strokeWidth="0.0" width="174.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="126.0" />
-                        <Rectangle fx:id="deleteBtn" arcHeight="8.0" arcWidth="8.0" fill="#8a8a8a66" height="28.0" layoutX="61.0" layoutY="265.0" stroke="#8a8a8a66" strokeType="INSIDE" strokeWidth="0.0" width="175.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="276.0" />
+                        <Rectangle fx:id="topicBtn" arcHeight="8.0" arcWidth="8.0" disable="true" fill="#e9bf8e" height="28.0" layoutX="61.0" layoutY="80.0" stroke="#e9bf8e66" strokeType="INSIDE" strokeWidth="0.0" width="174.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="80.0" />
+                        <Rectangle fx:id="mapBtn" arcHeight="8.0" arcWidth="8.0" fill="#8a8a8a66" height="28.0" layoutX="62.0" layoutY="126.0" stroke="#8a8a8a66" strokeType="INSIDE" strokeWidth="0.0" width="174.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="126.0" />
+                        <Rectangle fx:id="myClubsBtn" arcHeight="8.0" arcWidth="8.0" fill="#8a8a8a66" height="28.0" layoutX="61.0" layoutY="265.0" stroke="#8a8a8a66" strokeType="INSIDE" strokeWidth="0.0" width="175.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="276.0" />
                         <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="69.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@icons8-diversity-32.png" />
@@ -80,7 +87,7 @@
                         <Image url="@icons8-plus-+-24.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER_RIGHT" layoutX="59.0" layoutY="318.0" onMouseClicked="#onCreateClubClick" prefHeight="28.0" prefWidth="178.0" text="Create a club         " AnchorPane.topAnchor="318.0">
+                  <Label fx:id="createClubBtn" alignment="CENTER_RIGHT" layoutX="59.0" layoutY="318.0" onMouseClicked="#onCreateClubClick" prefHeight="28.0" prefWidth="178.0" text="Create a club         " AnchorPane.topAnchor="318.0">
                      <font>
                         <Font name="Roboto Medium" size="14.0" />
                      </font>
