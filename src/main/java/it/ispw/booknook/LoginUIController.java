@@ -6,14 +6,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.Objects;
 
+
 public class LoginUIController {
 
     @FXML
+    private TextField emailTf;
+
+    @FXML
+    private PasswordField passwTf;
+
+    @FXML
     void onLoginClick(ActionEvent event) throws IOException {
+        //recupera email e password
+        //crea loginBean che esegue controllo sintattico
+        LoginBean loginB = new LoginBean();
+        loginB.setEmail(emailTf.getText());
+        //verifica email e password inseriti su database
+        //se corretti apre homepage
+
+
         //apre hompepage
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homepage-view.fxml")));
         Scene scene = ((Button)(event.getSource())).getScene();

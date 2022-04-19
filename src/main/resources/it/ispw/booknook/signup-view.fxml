@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.ispw.booknook.SignupUIController">
+<BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.ispw.booknook.SignupUIController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="315.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" BorderPane.alignment="CENTER">
          <children>
@@ -21,11 +22,11 @@
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <TextField layoutX="32.0" layoutY="207.0" prefHeight="32.0" prefWidth="241.0" promptText="Email Address" style="-fx-background-color: -fx-control-inner-background;" AnchorPane.topAnchor="207.0">
+            <TextField fx:id="emailTf" layoutX="32.0" layoutY="207.0" prefHeight="32.0" prefWidth="241.0" promptText="Email Address" style="-fx-background-color: -fx-control-inner-background;" AnchorPane.topAnchor="207.0">
                <font>
                   <Font name="Roboto Medium" size="15.0" />
                </font></TextField>
-            <Button layoutX="42.0" layoutY="392.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="221.0" style="-fx-background-color: #e9bf8e; -fx-background-radius: 8; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" text="Sign Up" textFill="WHITE" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0">
+            <Button fx:id="signUpBtn" layoutX="42.0" layoutY="392.0" mnemonicParsing="false" onAction="#onSignUpClick" prefHeight="35.0" prefWidth="221.0" style="-fx-background-color: #e9bf8e; -fx-background-radius: 8; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" text="Sign Up" textFill="WHITE" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0">
                <font>
                   <Font name="Roboto Medium" size="15.0" />
                </font>
@@ -54,13 +55,13 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff24" height="64.0" layoutX="133.0" layoutY="144.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 25; -fx-arc-width: 25; -fx-stroke-width: 0;" width="166.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="16.0" />
-            <PasswordField layoutX="34.0" layoutY="258.0" promptText="Password" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0">
+            <Rectangle fx:id="errorPanel" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff24" height="50.0" layoutX="146.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 25; -fx-arc-width: 25; -fx-stroke-width: 0;" visible="false" width="141.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="28.19999999999999" />
+            <PasswordField fx:id="passwTf" layoutX="34.0" layoutY="258.0" promptText="Password" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0">
                <font>
                   <Font name="Roboto Medium" size="15.0" />
                </font>
             </PasswordField>
-            <PasswordField layoutX="32.0" layoutY="308.0" promptText="Password Confirmation" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0">
+            <PasswordField fx:id="passwdConfirmTf" layoutX="32.0" layoutY="308.0" promptText="Password Confirmation" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0">
                <font>
                   <Font name="Roboto Medium" size="15.0" />
                </font>
@@ -76,6 +77,21 @@
             <Label layoutX="149.0" layoutY="437.0" text="Or" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="149.0">
                <font>
                   <Font name="Roboto Medium" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="emailErrorField" alignment="CENTER" layoutX="141.0" layoutY="151.0" prefHeight="43.0" prefWidth="150.0" text="Invalid Email" textAlignment="CENTER" textFill="#33a8ea" visible="false" wrapText="true">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordErrorField" alignment="CENTER" layoutX="141.0" layoutY="151.0" prefHeight="43.0" prefWidth="150.0" text="Invalid Password" textAlignment="CENTER" textFill="#33a8ea" visible="false" wrapText="true">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="confirmErrorField" alignment="CENTER" layoutX="141.0" layoutY="151.0" prefHeight="43.0" prefWidth="150.0" text="Password does not match" textAlignment="CENTER" textFill="#33a8ea" visible="false" wrapText="true">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
                </font>
             </Label>
          </children>
