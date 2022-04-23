@@ -59,6 +59,7 @@ public class SignupUIController {
             return;
         }
         //se corrette registra utente (inserisce dati sul db), chiamando controller applicativo
+
         //apre l'homepage
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homepage-view.fxml")));
         Scene scene = ((Button)(event.getSource())).getScene();
