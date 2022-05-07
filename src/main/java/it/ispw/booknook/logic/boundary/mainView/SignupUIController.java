@@ -3,15 +3,15 @@ package it.ispw.booknook.logic.boundary.mainView;
 import it.ispw.booknook.logic.bean.LoginBean;
 import it.ispw.booknook.logic.control.SignUpController;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -65,11 +65,15 @@ public class SignupUIController {
         SignUpController controller = new SignUpController();
         controller.registerReader(loginBean);
 
-        /*
-        aprire messaggio registrazione con successo
-        */
 
-       //apre l'homepage
+        //aprire messaggio registrazione con successo
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Registration succeded");
+        alert.setHeaderText(null);
+        alert.setContentText("Your registration has been completed successfully. Have fun!");
+        alert.showAndWait();
+
+       //alla chiusura del dialog apre l'homepage
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/homepage-view.fxml")));
         Scene scene = ((Button)(event.getSource())).getScene();
         scene.setRoot(root);

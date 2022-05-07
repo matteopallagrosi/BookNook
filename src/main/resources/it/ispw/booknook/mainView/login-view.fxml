@@ -49,7 +49,7 @@
                 </Label>
                 <Separator layoutX="42.0" layoutY="238.0" prefWidth="200.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" />
                 <Separator layoutX="42.0" layoutY="287.0" prefWidth="200.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" />
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff24" height="79.0" layoutX="42.0" layoutY="438.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 25; -fx-arc-width: 25; -fx-stroke-width: 0;" width="231.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" />
+                <Rectangle fx:id="errorPanel" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff24" height="79.0" layoutX="42.0" layoutY="438.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 25; -fx-arc-width: 25; -fx-stroke-width: 0;" visible="false" width="231.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" />
                 <PasswordField fx:id="passwTf" layoutX="34.0" layoutY="258.0" promptText="Password" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0">
                     <font>
                         <Font name="Roboto Medium" size="15.0" />
@@ -66,6 +66,11 @@
             <Label alignment="CENTER" layoutX="143.0" layoutY="359.0" prefHeight="26.0" prefWidth="28.0" text="Or" wrapText="true" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="144.0">
                <font>
                   <Font name="Roboto Medium" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorField" layoutX="73.0" layoutY="468.0" text="Invalid Email or Password" textFill="#33a8ea" visible="false">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
                </font>
             </Label>
             </children>

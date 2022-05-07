@@ -13,5 +13,11 @@ public class LogQueries {
         return stat.executeUpdate(query);
     }
 
+    public static ResultSet selectReaderUser(Statement stat, String email, String password) throws SQLException {
+        String query = "SELECT email,password FROM readeruser where email = '" + email + "' and password = '" + password + "';";
+        return stat.executeQuery(query);
+    }
+
+
 
 }
