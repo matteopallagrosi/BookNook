@@ -61,4 +61,14 @@ public class LoginUIController {
         root.requestFocus();
     }
 
+    @FXML
+    void onContinueNoAccount(ActionEvent event) throws IOException {
+        //apre direttamente hompepage
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/homepage-view.fxml")));
+        Scene scene = ((Button)(event.getSource())).getScene();
+        scene.setRoot(root);
+        root.requestFocus();
+
+    }
+
 }

@@ -55,7 +55,7 @@
                         <Font name="Roboto Medium" size="15.0" />
                     </font>
                 </PasswordField>
-            <Button fx:id="loginBtn1" layoutX="43.0" layoutY="392.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #33a8ea; -fx-background-radius: 8; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" text="Continue without an account" textFill="WHITE" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0">
+            <Button fx:id="loginBtn1" layoutX="43.0" layoutY="392.0" mnemonicParsing="false" onAction="#onContinueNoAccount" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #33a8ea; -fx-background-radius: 8; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" text="Continue without an account" textFill="WHITE" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0">
                <effect>
                   <Shadow />
                </effect>
