@@ -18,6 +18,13 @@ public class LogQueries {
         return stat.executeQuery(query);
     }
 
+    public static ResultSet getpass(Statement stat, String email) throws SQLException {
+        String query = "SELECT password FROM readeruser where email = '" + email + "';";
+        return stat.executeQuery(query);
+    }
+
+
+
 
 
 }

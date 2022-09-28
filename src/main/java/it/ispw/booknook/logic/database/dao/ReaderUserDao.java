@@ -80,6 +80,46 @@ public class ReaderUserDao {
         return user;
     }
 
+    public static String getPassUser(String email) throws Exception{
+        Statement stmt = null;
+        Connection conn = null;
+        String readerPassword = null;
+
+
+        BookNookDB db = BookNookDB.getInstance();
+        conn = db.getConn();
+
+        try {
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = LogQueries.getpass(stmt, email);
+
+            if (!rs.first()){ // rs empty
+                throw new Exception("No User Found matching with email and password");
+            }
+
+            //altrimenti l'utente è presente
+            rs.first();
+
+            readerPassword = rs.getString("password");
+
+            rs.close();
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if(stmt != null) {
+                    stmt.close();
+                }
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return readerPassword;
+    }
+
 
 
 }
