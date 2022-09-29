@@ -14,7 +14,6 @@ public class LoginBean {
     public LoginBean(String email, String password) {
         this.email = email;
         this.password = password;
-	System.out.println("ciao");
     }
 
 
