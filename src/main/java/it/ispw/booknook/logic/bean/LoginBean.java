@@ -6,10 +6,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginBean {
+
+    private String username;
     private String email;
     private String password;
 
     public LoginBean() {}
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public LoginBean(String email, String password) {
         this.email = email;

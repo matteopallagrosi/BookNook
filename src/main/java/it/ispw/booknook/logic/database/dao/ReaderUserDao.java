@@ -39,7 +39,7 @@ public class ReaderUserDao {
     }
 
     //recupera un utente dal db se presente
-    public static ReaderUser getReaderUser(String email, String password) throws Exception{
+   /* public static ReaderUser getReaderUser(String email, String password) throws Exception{
         Statement stmt = null;
         Connection conn = null;
         ReaderUser user = null;
@@ -78,7 +78,7 @@ public class ReaderUserDao {
             }
         }
         return user;
-    }
+    } */
 
     public static String getPassUser(String email) throws Exception{
         Statement stmt = null;

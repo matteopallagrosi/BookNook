@@ -8,7 +8,7 @@ import it.ispw.booknook.logic.entity.ReaderUser;
 public class SignUpController {
 
     public void registerReader(LoginBean loginBean) {
-        ReaderUser reader =  new ReaderUser(loginBean.getEmail(), BCrypt.withDefaults().hashToString(12, loginBean.getPassword().toCharArray()));
+        ReaderUser reader =  new ReaderUser(loginBean.getUsername(), loginBean.getEmail(), BCrypt.withDefaults().hashToString(12, loginBean.getPassword().toCharArray()));
         ReaderUserDao.registerReaderUser(reader);
     }
 

@@ -4,16 +4,26 @@ import it.ispw.booknook.logic.database.dao.ReaderUserDao;
 
 public class ReaderUser {
 
+    private String username;
     private String email;
     private String password;
     private String name;
     private String surname;
 
-    public ReaderUser(String email, String password) {
+    public ReaderUser(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
         this.name = null;
         this.surname = null;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

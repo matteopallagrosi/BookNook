@@ -19,13 +19,13 @@ import java.util.Objects;
 public class SignupUIController {
 
     @FXML
+    private TextField usernameTf;
+
+    @FXML
     private TextField emailTf;
 
     @FXML
-    private PasswordField passwTf;
-
-    @FXML
-    private PasswordField passwdConfirmTf;
+    private PasswordField passwordTf;
 
     @FXML
     private Rectangle errorPanel;
@@ -45,19 +45,16 @@ public class SignupUIController {
         //creare il bean che esegue controllo sintattico email e password
         LoginBean loginBean = new LoginBean();
         loginBean.setEmail(emailTf.getText());
+        loginBean.setUsername(usernameTf.getText());
         if (loginBean.getEmail() == null) {
             System.out.println("Sbagliato");
             showEmailError();
             return;
         }
-        loginBean.setPassword(passwTf.getText());
+        loginBean.setPassword(passwordTf.getText());
         if (loginBean.getPassword() == null) {
             System.out.println("Sbagliato");
             showPasswordError();
-            return;
-        }
-        if (!passwTf.getText().equals(passwdConfirmTf.getText())) {
-            showConfirmError();
             return;
         }
 
@@ -93,13 +90,6 @@ public class SignupUIController {
         emailErrorField.setVisible(false);
         confirmErrorField.setVisible(false);
         passwordErrorField.setVisible(true);
-    }
-
-    private void showConfirmError() {
-        errorPanel.setVisible(true);
-        emailErrorField.setVisible(false);
-        passwordErrorField.setVisible(false);
-        confirmErrorField.setVisible(true);
     }
 
 
