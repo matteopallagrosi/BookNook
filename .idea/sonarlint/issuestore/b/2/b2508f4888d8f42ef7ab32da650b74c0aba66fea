@@ -1,0 +1,36 @@
+
+`	java:S112&"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+J
+java:S37406"/Provide the parametrized type for this generic.(€œ±…øÿÿÿÿ
+J
+java:S37406"/Provide the parametrized type for this generic.(€œ±…øÿÿÿÿ
+h
+java:S3776/"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(¢Â¡œ
+N	java:S1064"9Replace this use of System.out or System.err by a logger.(§ó®˜
+S	java:S106F"9Replace this use of System.out or System.err by a logger.(äüÑüÿÿÿÿ
+7	java:S131J""Add a default case to this switch.(„¾Õñ
+N	java:S106["9Replace this use of System.out or System.err by a logger.(·¸ÍÀ
+S	java:S106p"9Replace this use of System.out or System.err by a logger.(‹è»×øÿÿÿÿ
+n
+java:S2293L"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ëš¤R
+p
+java:S1192:"UDefine a constant instead of duplicating this literal "-fx-font-size: 15px;" 3 times.(÷áŸ„ÿÿÿÿÿ
+u
+java:S1192?"ZDefine a constant instead of duplicating this literal "-fx-background-radius: 8;" 3 times.(·Ê—äûÿÿÿÿ
+q
+java:S1192A"VDefine a constant instead of duplicating this literal "-fx-text-fill: white;" 3 times.(¼’Ê†üÿÿÿÿ
+o
+java:S1192;"YDefine a constant instead of duplicating this literal "-fx-font-family: Roboto " 3 times.(ÜÃ’½
+z
+java:S1192>"_Define a constant instead of duplicating this literal "-fx-background-color: #e9bf8e;" 3 times.(¥Í†àûÿÿÿÿ
+w
+java:S1192B"aDefine a constant instead of duplicating this literal "-fx-font-family: 'Roboto Medium'" 3 times.(Ç¼ÅÊ
+›
+java:S1192@"„Define a constant instead of duplicating this literal "-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" 3 times.(Î›¤™
+a
+java:S1301J"KReplace this "switch" statement by "if" statements to increase readability.(„¾Õñ
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(«˜û8ú¬®¸…0
+]
+java:S2259j"BA "NullPointerException" could be thrown; "root" is nullable here.(Ó­ù†şÿÿÿÿ
+f
+java:S3655Z"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(„ ¥ 

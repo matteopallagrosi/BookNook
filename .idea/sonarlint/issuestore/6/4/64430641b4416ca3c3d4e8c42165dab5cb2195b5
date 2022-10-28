@@ -1,16 +1,0 @@
-
-£
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•‘ÝŸüÿÿÿÿ8Ûô¹ßê/
-X
-java:S1128"<Remove this unused import 'javafx.scene.SnapshotParameters'.(ÏãÃg8þ†·ßê/
-X
-java:S1128";Remove this unused import 'javafx.scene.effect.DropShadow'.(Þ×òó8ëô¹ßê/
-R
-java:S1128"5Remove this unused import 'javafx.scene.image.Image'.(‰¿½Ç8ëô¹ßê/
-Z
-java:S1128	"=Remove this unused import 'javafx.scene.image.WritableImage'.(ïçŸ¯8ÿ†·ßê/
-R
-java:S1128
-"5Remove this unused import 'javafx.scene.paint.Color'.(Ïî£à8ìô¹ßê/
-W
-java:S1128"5Remove this unused import 'javafx.scene.shape.Shape'.(Ô£ö™ûÿÿÿÿ8ÿ†·ßê/

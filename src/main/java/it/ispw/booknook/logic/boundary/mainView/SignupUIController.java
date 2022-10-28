@@ -37,7 +37,7 @@ public class SignupUIController {
     private Label passwordErrorField;
 
     @FXML
-    private Label confirmErrorField;
+    private Label usernameErrorField;
 
     @FXML
     void onSignUpClick(ActionEvent event) throws IOException {
@@ -46,14 +46,16 @@ public class SignupUIController {
         LoginBean loginBean = new LoginBean();
         loginBean.setEmail(emailTf.getText());
         loginBean.setUsername(usernameTf.getText());
+        if (loginBean.getUsername().isEmpty()) {
+            showUsernameError();
+            return;
+        }
         if (loginBean.getEmail() == null) {
-            System.out.println("Sbagliato");
             showEmailError();
             return;
         }
         loginBean.setPassword(passwordTf.getText());
         if (loginBean.getPassword() == null) {
-            System.out.println("Sbagliato");
             showPasswordError();
             return;
         }
@@ -81,15 +83,22 @@ public class SignupUIController {
     private void showEmailError() {
         errorPanel.setVisible(true);
         passwordErrorField.setVisible(false);
-        confirmErrorField.setVisible(false);
+        usernameErrorField.setVisible(false);
         emailErrorField.setVisible(true);
     }
 
     private void showPasswordError() {
         errorPanel.setVisible(true);
         emailErrorField.setVisible(false);
-        confirmErrorField.setVisible(false);
+        usernameErrorField.setVisible(false);
         passwordErrorField.setVisible(true);
+    }
+
+    private void showUsernameError() {
+        errorPanel.setVisible(true);
+        emailErrorField.setVisible(false);
+        usernameErrorField.setVisible(true);
+        passwordErrorField.setVisible(false);
     }
 
 

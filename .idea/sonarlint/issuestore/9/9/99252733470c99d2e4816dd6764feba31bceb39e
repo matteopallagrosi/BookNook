@@ -1,6 +1,0 @@
-
-v
-java:S1450"TRemove the "items" field and declare it as a local variable in the relevant methods.(™íÿÏÿÿÿÿÿ8©›Üá/
-S	java:S106/"9Replace this use of System.out or System.err by a logger.(ª„–Áüÿÿÿÿ
-[
-java:S1128"9Remove this unused import 'javafx.scene.image.ImageView'.(áÿ®Ãüÿÿÿÿ8·›Üá/

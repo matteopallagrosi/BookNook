@@ -84,7 +84,7 @@
                   <Font name="Roboto Medium" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="confirmErrorField" alignment="CENTER" layoutX="141.0" layoutY="151.0" prefHeight="43.0" prefWidth="150.0" text="Password does not match" textAlignment="CENTER" textFill="#33a8ea" visible="false" wrapText="true">
+            <Label fx:id="usernameErrorField" alignment="CENTER" layoutX="141.0" layoutY="151.0" prefHeight="43.0" prefWidth="150.0" text="Invalid username" textAlignment="CENTER" textFill="#33a8ea" visible="false" wrapText="true">
                <font>
                   <Font name="Roboto Medium" size="15.0" />
                </font>
