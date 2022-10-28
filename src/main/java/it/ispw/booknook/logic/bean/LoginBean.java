@@ -59,9 +59,8 @@ public class LoginBean {
         if (email.isEmpty() || !validator.isValid(email)) {
             return false;
         }
-        else {
-            return true;
-        }
+
+        return true;
     }
 
     private boolean checkPassword(String password) {  //controllo sintattico password
