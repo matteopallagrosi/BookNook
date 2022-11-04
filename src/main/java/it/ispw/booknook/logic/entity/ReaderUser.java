@@ -1,7 +1,5 @@
 package it.ispw.booknook.logic.entity;
 
-import it.ispw.booknook.logic.database.dao.ReaderUserDao;
-
 public class ReaderUser {
 
     private String username;
