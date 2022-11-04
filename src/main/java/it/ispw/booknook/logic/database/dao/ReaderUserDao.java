@@ -13,6 +13,8 @@ import java.util.logging.Logger;
 
 public class ReaderUserDao {
 
+    private ReaderUserDao() {}
+
     //registra un nuovo utente Reader nel sistema
     public static void registerReaderUser(ReaderUser user) {
         Connection conn = null;
