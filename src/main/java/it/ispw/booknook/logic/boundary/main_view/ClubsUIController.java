@@ -33,6 +33,9 @@ public class ClubsUIController implements Initializable {
     @FXML
     private Rectangle topicBtn;
 
+    private static final String selectedColor = "#e9bf8e";
+    private static final String defaultColor = "#8a8a8a66";
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,18 +72,18 @@ public class ClubsUIController implements Initializable {
 
     @FXML
     void onMapClick(MouseEvent event) throws IOException {
-        mapBtn.setFill(Color.web("#e9bf8e"));
-        topicBtn.setFill(Color.web("#8a8a8a66"));
-        myClubsBtn.setFill((Color.web("#8a8a8a66")));
+        mapBtn.setFill(Color.web(selectedColor));
+        topicBtn.setFill(Color.web(defaultColor));
+        myClubsBtn.setFill((Color.web(defaultColor)));
         AnchorPane mapPane = FXMLLoader.load(getClass().getResource("/it/ispw/booknook/mainView/clubsMap-view.fxml"));
         currentPane.setCenter(mapPane);
     }
 
     @FXML
     void onMyClubsClick(MouseEvent event) throws IOException {
-        mapBtn.setFill(Color.web("#8a8a8a66"));
-        topicBtn.setFill(Color.web("#8a8a8a66"));
-        myClubsBtn.setFill((Color.web("#e9bf8e")));
+        mapBtn.setFill(Color.web(defaultColor));
+        topicBtn.setFill(Color.web(defaultColor));
+        myClubsBtn.setFill((Color.web(selectedColor)));
         AnchorPane mapPane = FXMLLoader.load(getClass().getResource("/it/ispw/booknook/mainView/myClubs-view.fxml"));
         currentPane.setCenter(mapPane);
 
@@ -93,9 +96,9 @@ public class ClubsUIController implements Initializable {
 
     @FXML
     void onTopicsClick(MouseEvent event) throws IOException {
-        mapBtn.setFill(Color.web("#8a8a8a66"));
-        topicBtn.setFill(Color.web("#e9bf8e"));
-        myClubsBtn.setFill((Color.web("#8a8a8a66")));
+        mapBtn.setFill(Color.web(defaultColor));
+        topicBtn.setFill(Color.web(selectedColor));
+        myClubsBtn.setFill((Color.web(defaultColor)));
         AnchorPane topicPane = FXMLLoader.load(getClass().getResource("/it/ispw/booknook/mainView/topics-view.fxml"));
         currentPane.setCenter(topicPane);
     }
