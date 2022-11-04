@@ -9,7 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 //singleton
@@ -38,7 +39,8 @@ public class BookNookDB {
                 Class.forName(p.getProperty("jdbcDriver"));
                 db.conn = DriverManager.getConnection(p.getProperty("jdbcUrl"), p.getProperty("jdbcUser"), p.getProperty("jdbcPass"));
             } catch (ClassNotFoundException | IOException | SQLException e) {
-                e.printStackTrace();
+                Logger logger = Logger.getLogger("MyLog");
+                logger.log(Level.INFO, "This is message 1", e);
             }
         }
         return db.conn;
@@ -48,8 +50,9 @@ public class BookNookDB {
         try {
             db.conn.close();
             db.conn = null;
-        } catch (SQLException se) {
-            se.printStackTrace();
+        } catch (SQLException e) {
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
         }
     }
 

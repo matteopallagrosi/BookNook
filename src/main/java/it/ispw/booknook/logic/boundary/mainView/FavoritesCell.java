@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FavoritesCell {
 
@@ -30,7 +32,8 @@ public class FavoritesCell {
         try {
             fxmlLoader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
         }
     }
 

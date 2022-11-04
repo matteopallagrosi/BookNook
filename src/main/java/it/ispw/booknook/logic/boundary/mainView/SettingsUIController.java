@@ -21,6 +21,8 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SettingsUIController implements Initializable {
     @FXML
@@ -43,7 +45,8 @@ public class SettingsUIController implements Initializable {
             AnchorPane accountPane = FXMLLoader.load(getClass().getResource("/it/ispw/booknook/mainView/accountsettings-view.fxml"));
             currentSettingsPane.setCenter(accountPane);
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
         }
     }
 
