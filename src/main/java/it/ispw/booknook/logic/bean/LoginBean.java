@@ -75,8 +75,8 @@ public class LoginBean {
          */
 
         //controllo sintattico della password
-        String passwordPattern = "((?=.*\\d)(?=.*[!?._-]).{8,20})";
-        Pattern pattern = Pattern.compile(passwordPattern);
+        String pwdPattern = "((?=.*\\d)(?=.*[!?._-]).{8,20})";
+        Pattern pattern = Pattern.compile(pwdPattern);
         Matcher matcher = pattern.matcher(password);
 
         return matcher.matches();
