@@ -1,4 +1,4 @@
-package it.ispw.booknook.logic.boundary.mainView;
+package it.ispw.booknook.logic.boundary.main_view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

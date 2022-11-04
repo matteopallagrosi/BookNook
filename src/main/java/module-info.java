@@ -10,8 +10,8 @@ module it.ispw.booknook {
 
     opens it.ispw.booknook to javafx.fxml;
     exports it.ispw.booknook;
-    exports it.ispw.booknook.logic.boundary.mainView;
-    opens it.ispw.booknook.logic.boundary.mainView to javafx.fxml;
+    exports it.ispw.booknook.logic.boundary.main_view;
+    opens it.ispw.booknook.logic.boundary.main_view to javafx.fxml;
     exports it.ispw.booknook.logic.entity;
     opens it.ispw.booknook.logic.entity to javafx.fxml;
     exports it.ispw.booknook.logic.bean;

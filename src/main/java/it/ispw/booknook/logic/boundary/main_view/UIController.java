@@ -1,11 +1,10 @@
-package it.ispw.booknook.logic.boundary.mainView;
+package it.ispw.booknook.logic.boundary.main_view;
 
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 
 import java.io.IOException;
 import java.util.Objects;

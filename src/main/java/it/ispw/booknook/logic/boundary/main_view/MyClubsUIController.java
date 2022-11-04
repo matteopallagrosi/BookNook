@@ -1,4 +1,4 @@
-package it.ispw.booknook.logic.boundary.mainView;
+package it.ispw.booknook.logic.boundary.main_view;
 
 import it.ispw.booknook.logic.entity.Club;
 import javafx.collections.FXCollections;
