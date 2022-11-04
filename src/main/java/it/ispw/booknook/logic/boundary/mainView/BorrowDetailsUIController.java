@@ -47,7 +47,7 @@ public class BorrowDetailsUIController implements Initializable {
         ObservableList<Library> observableList = FXCollections.observableArrayList(library1, library2, library3, library4, library5, library6, library7);
         libraryList.setItems(observableList);
         libraryList.setStyle("-fx-focus-color: transparent;");
-        libraryList.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/bookList.css")).toExternalForm());
+        libraryList.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/libraryList.css")).toExternalForm());
         libraryList.setFocusTraversable(false);
         libraryList.setCellFactory(listView -> new LibraryViewCell());
     }
