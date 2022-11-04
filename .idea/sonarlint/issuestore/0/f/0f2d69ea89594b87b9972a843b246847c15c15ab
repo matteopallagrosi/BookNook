@@ -1,0 +1,6 @@
+
+N	java:S106G"9Replace this use of System.out or System.err by a logger.(ùàèü
+”
+java:S1192>"rDefine a constant instead of duplicating this literal "/it/ispw/booknook/mainView/consultation-view.fxml" 3 times.(øà©¤ûÿÿÿÿ8ÞÚ¨¸…0
+Q	java:S110("<This class has 8 parents which is greater than 5 authorized.(¯ÓÞ”
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(«˜û

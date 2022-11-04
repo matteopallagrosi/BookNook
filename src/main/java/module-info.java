@@ -6,6 +6,7 @@ module it.ispw.booknook {
     requires javafx.web;
     requires commons.validator;
     requires java.sql;
+    requires bcrypt;
 
     opens it.ispw.booknook to javafx.fxml;
     exports it.ispw.booknook;

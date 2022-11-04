@@ -22,7 +22,7 @@
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <TextField fx:id="emailTf" layoutX="32.0" layoutY="207.0" prefHeight="32.0" prefWidth="241.0" promptText="Email Address" style="-fx-background-color: -fx-control-inner-background;" AnchorPane.topAnchor="207.0">
+            <TextField fx:id="usernameTf" layoutX="32.0" layoutY="207.0" prefHeight="32.0" prefWidth="241.0" promptText="Username" style="-fx-background-color: -fx-control-inner-background;" AnchorPane.topAnchor="207.0">
                <font>
                   <Font name="Roboto Medium" size="15.0" />
                </font></TextField>
@@ -56,12 +56,7 @@
                </font>
             </Label>
             <Rectangle fx:id="errorPanel" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff24" height="50.0" layoutX="146.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 25; -fx-arc-width: 25; -fx-stroke-width: 0;" visible="false" width="141.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="28.19999999999999" />
-            <PasswordField fx:id="passwTf" layoutX="34.0" layoutY="258.0" promptText="Password" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0">
-               <font>
-                  <Font name="Roboto Medium" size="15.0" />
-               </font>
-            </PasswordField>
-            <PasswordField fx:id="passwdConfirmTf" layoutX="32.0" layoutY="308.0" promptText="Password Confirmation" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0">
+            <PasswordField fx:id="passwordTf" layoutX="32.0" layoutY="308.0" promptText="Password" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0">
                <font>
                   <Font name="Roboto Medium" size="15.0" />
                </font>
@@ -89,11 +84,16 @@
                   <Font name="Roboto Medium" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="confirmErrorField" alignment="CENTER" layoutX="141.0" layoutY="151.0" prefHeight="43.0" prefWidth="150.0" text="Password does not match" textAlignment="CENTER" textFill="#33a8ea" visible="false" wrapText="true">
+            <Label fx:id="usernameErrorField" alignment="CENTER" layoutX="141.0" layoutY="151.0" prefHeight="43.0" prefWidth="150.0" text="Invalid username" textAlignment="CENTER" textFill="#33a8ea" visible="false" wrapText="true">
                <font>
                   <Font name="Roboto Medium" size="15.0" />
                </font>
             </Label>
+            <TextField fx:id="emailTf" layoutX="32.0" layoutY="255.0" prefHeight="32.0" prefWidth="241.0" promptText="Email" style="-fx-background-color: -fx-control-inner-background;">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </center>

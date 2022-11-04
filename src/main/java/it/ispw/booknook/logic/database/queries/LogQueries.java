@@ -9,14 +9,21 @@ import java.sql.Statement;
 public class LogQueries {
 
     public static int saveReaderUser(Statement stat, ReaderUser user) throws SQLException {
-        String query = String.format("INSERT INTO readeruser (email, password) VALUES ('%s','%s')", user.getEmail(), user.getPassword());
+        String query = String.format("INSERT INTO utenti (username, email, password) VALUES ('%s', '%s','%s')",user.getUsername(), user.getEmail(), user.getPassword());
         return stat.executeUpdate(query);
     }
 
     public static ResultSet selectReaderUser(Statement stat, String email, String password) throws SQLException {
-        String query = "SELECT email,password FROM readeruser where email = '" + email + "' and password = '" + password + "';";
+        String query = "SELECT email,password FROM utenti where email = '" + email + "' and password = '" + password + "';";
         return stat.executeQuery(query);
     }
+
+    public static ResultSet getpass(Statement stat, String email) throws SQLException {
+        String query = "SELECT password FROM utenti where email = '" + email + "';";
+        return stat.executeQuery(query);
+    }
+
+
 
 
 

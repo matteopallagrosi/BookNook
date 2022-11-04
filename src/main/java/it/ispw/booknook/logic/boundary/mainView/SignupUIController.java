@@ -19,13 +19,13 @@ import java.util.Objects;
 public class SignupUIController {
 
     @FXML
+    private TextField usernameTf;
+
+    @FXML
     private TextField emailTf;
 
     @FXML
-    private PasswordField passwTf;
-
-    @FXML
-    private PasswordField passwdConfirmTf;
+    private PasswordField passwordTf;
 
     @FXML
     private Rectangle errorPanel;
@@ -37,7 +37,7 @@ public class SignupUIController {
     private Label passwordErrorField;
 
     @FXML
-    private Label confirmErrorField;
+    private Label usernameErrorField;
 
     @FXML
     void onSignUpClick(ActionEvent event) throws IOException {
@@ -45,19 +45,18 @@ public class SignupUIController {
         //creare il bean che esegue controllo sintattico email e password
         LoginBean loginBean = new LoginBean();
         loginBean.setEmail(emailTf.getText());
+        loginBean.setUsername(usernameTf.getText());
+        if (loginBean.getUsername().isEmpty()) {
+            showUsernameError();
+            return;
+        }
         if (loginBean.getEmail() == null) {
-            System.out.println("Sbagliato");
             showEmailError();
             return;
         }
-        loginBean.setPassword(passwTf.getText());
+        loginBean.setPassword(passwordTf.getText());
         if (loginBean.getPassword() == null) {
-            System.out.println("Sbagliato");
             showPasswordError();
-            return;
-        }
-        if (!passwTf.getText().equals(passwdConfirmTf.getText())) {
-            showConfirmError();
             return;
         }
 
@@ -84,22 +83,22 @@ public class SignupUIController {
     private void showEmailError() {
         errorPanel.setVisible(true);
         passwordErrorField.setVisible(false);
-        confirmErrorField.setVisible(false);
+        usernameErrorField.setVisible(false);
         emailErrorField.setVisible(true);
     }
 
     private void showPasswordError() {
         errorPanel.setVisible(true);
         emailErrorField.setVisible(false);
-        confirmErrorField.setVisible(false);
+        usernameErrorField.setVisible(false);
         passwordErrorField.setVisible(true);
     }
 
-    private void showConfirmError() {
+    private void showUsernameError() {
         errorPanel.setVisible(true);
         emailErrorField.setVisible(false);
+        usernameErrorField.setVisible(true);
         passwordErrorField.setVisible(false);
-        confirmErrorField.setVisible(true);
     }
 
 

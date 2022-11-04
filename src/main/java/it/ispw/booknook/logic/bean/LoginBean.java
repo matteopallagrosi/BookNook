@@ -6,10 +6,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginBean {
+
+    private String username;
     private String email;
     private String password;
 
     public LoginBean() {}
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public LoginBean(String email, String password) {
         this.email = email;
@@ -49,9 +59,8 @@ public class LoginBean {
         if (email.isEmpty() || !validator.isValid(email)) {
             return false;
         }
-        else {
-            return true;
-        }
+
+        return true;
     }
 
     private boolean checkPassword(String password) {  //controllo sintattico password

@@ -1,5 +1,7 @@
 package it.ispw.booknook.logic.database;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+
 
 
 //singleton
@@ -28,6 +31,7 @@ public class BookNookDB {
     public Connection getConn() {
         if (db.conn == null) {
             p = new Properties();
+
             //FileInputStream implementa interfaccia Autoclosable perciò try-with-resources assicura sempre la chiusura
             try (FileInputStream f = new FileInputStream("C:\\Users\\HP\\IdeaProjects\\BookNook\\src\\main\\resources\\dbconfig.properties")) {
                 p.load(f);
