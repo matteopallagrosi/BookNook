@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ReaderUserDao {
 
@@ -21,7 +23,8 @@ public class ReaderUserDao {
         try {
             LogQueries.saveReaderUser(conn, user);
         } catch(SQLException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
         }
     }
 
@@ -79,7 +82,7 @@ public class ReaderUserDao {
         try {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = LogQueries.getpass(stmt, email);
+            ResultSet rs = LogQueries.getpass(conn, email);
 
             if (!rs.first()){ // rs empty
                 throw new Exception("No User Found matching with email and password");
@@ -93,7 +96,8 @@ public class ReaderUserDao {
             rs.close();
 
         } catch(SQLException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
         }
         finally {
             try {
@@ -101,7 +105,8 @@ public class ReaderUserDao {
                     stmt.close();
                 }
             }catch (SQLException e) {
-                e.printStackTrace();
+                Logger logger = Logger.getLogger("MyLog");
+                logger.log(Level.INFO, "This is message 1", e);
             }
         }
         return readerPassword;

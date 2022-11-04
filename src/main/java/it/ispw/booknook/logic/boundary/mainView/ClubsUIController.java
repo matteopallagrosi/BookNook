@@ -14,6 +14,8 @@ import javafx.scene.shape.Rectangle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ClubsUIController implements Initializable {
     @FXML
@@ -38,7 +40,8 @@ public class ClubsUIController implements Initializable {
         try {
             topicPane = FXMLLoader.load(getClass().getResource("/it/ispw/booknook/mainView/topics-view.fxml"));
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
         }
         currentPane.setCenter(topicPane);
 
