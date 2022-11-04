@@ -33,8 +33,8 @@ public class ClubsUIController implements Initializable {
     @FXML
     private Rectangle topicBtn;
 
-    private static final String selectedColor = "#e9bf8e";
-    private static final String defaultColor = "#8a8a8a66";
+    private static final String SELECTED_COLOR = "#e9bf8e";
+    private static final String DEFAULT_COLOR = "#8a8a8a66";
 
 
     @Override
@@ -72,18 +72,18 @@ public class ClubsUIController implements Initializable {
 
     @FXML
     void onMapClick(MouseEvent event) throws IOException {
-        mapBtn.setFill(Color.web(selectedColor));
-        topicBtn.setFill(Color.web(defaultColor));
-        myClubsBtn.setFill((Color.web(defaultColor)));
+        mapBtn.setFill(Color.web(SELECTED_COLOR));
+        topicBtn.setFill(Color.web(DEFAULT_COLOR));
+        myClubsBtn.setFill((Color.web(DEFAULT_COLOR)));
         AnchorPane mapPane = FXMLLoader.load(getClass().getResource("/it/ispw/booknook/mainView/clubsMap-view.fxml"));
         currentPane.setCenter(mapPane);
     }
 
     @FXML
     void onMyClubsClick(MouseEvent event) throws IOException {
-        mapBtn.setFill(Color.web(defaultColor));
-        topicBtn.setFill(Color.web(defaultColor));
-        myClubsBtn.setFill((Color.web(selectedColor)));
+        mapBtn.setFill(Color.web(DEFAULT_COLOR));
+        topicBtn.setFill(Color.web(DEFAULT_COLOR));
+        myClubsBtn.setFill((Color.web(SELECTED_COLOR)));
         AnchorPane mapPane = FXMLLoader.load(getClass().getResource("/it/ispw/booknook/mainView/myClubs-view.fxml"));
         currentPane.setCenter(mapPane);
 
@@ -96,9 +96,9 @@ public class ClubsUIController implements Initializable {
 
     @FXML
     void onTopicsClick(MouseEvent event) throws IOException {
-        mapBtn.setFill(Color.web(defaultColor));
-        topicBtn.setFill(Color.web(selectedColor));
-        myClubsBtn.setFill((Color.web(defaultColor)));
+        mapBtn.setFill(Color.web(DEFAULT_COLOR));
+        topicBtn.setFill(Color.web(SELECTED_COLOR));
+        myClubsBtn.setFill((Color.web(DEFAULT_COLOR)));
         AnchorPane topicPane = FXMLLoader.load(getClass().getResource("/it/ispw/booknook/mainView/topics-view.fxml"));
         currentPane.setCenter(topicPane);
     }

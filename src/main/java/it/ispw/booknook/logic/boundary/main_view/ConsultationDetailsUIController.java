@@ -26,7 +26,7 @@ public class ConsultationDetailsUIController extends UIController implements Ini
     @FXML
     private WebView map;
 
-    private static final String pageName = "/it/ispw/booknook/mainView/consultation-view.fxml";
+    private static final String PAGE_NAME = "/it/ispw/booknook/mainView/consultation-view.fxml";
 
 
     @Override
@@ -54,7 +54,7 @@ public class ConsultationDetailsUIController extends UIController implements Ini
 
     @FXML
     void onConsultationClick(ActionEvent event) throws IOException {
-        changePage(pageName, event);
+        changePage(PAGE_NAME, event);
     }
 
     //selezione della data
@@ -95,14 +95,14 @@ public class ConsultationDetailsUIController extends UIController implements Ini
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent() && result.get() == type) {
             //conferma la prenotazione, invia email, riporta alla schermata iniziale
-            changePage(pageName, event);
+            changePage(PAGE_NAME, event);
         }
     }
 
     @FXML
     void onBackClick(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(pageName));
-        changePage(pageName, event);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PAGE_NAME));
+        changePage(PAGE_NAME, event);
         ConsultationUIController controller = fxmlLoader.<ConsultationUIController>getController();
         ObservableList<String> items = FXCollections.observableArrayList("Primo", "Secondo", "Terzo", "Quarto",
                 "Quinto", "Sesto", "Settimo", "Ottavo");
