@@ -6,6 +6,6 @@
     -fx-padding: 0;
 }
 
-.menu-item:focused {
+.menu-item:hover {
     -fx-background-color: #8c8c8c;
 }
