@@ -6,6 +6,8 @@ import java.sql.*;
 
 public class LogQueries {
 
+    private LogQueries() {}
+
     public static int saveReaderUser(Connection connection, ReaderUser user) throws SQLException {
         String query = String.format("INSERT INTO utenti (username, email, password) VALUES (?, ?,?)");
         PreparedStatement pstmt = connection.prepareStatement( query );
