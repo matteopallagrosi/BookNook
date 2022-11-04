@@ -23,7 +23,7 @@ public class BookNookDB {
 
     private BookNookDB() {}
 
-    public synchronized static BookNookDB getInstance() {
+    public static synchronized BookNookDB getInstance() {
         if (BookNookDB.db == null)
             BookNookDB.db = new BookNookDB();
         return db;
