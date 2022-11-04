@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SettingsUIController implements Initializable {
+public class SettingsUIController extends UIController implements Initializable {
     @FXML
     private BorderPane currentSettingsPane;
 
@@ -103,26 +103,17 @@ public class SettingsUIController implements Initializable {
 
     @FXML
     void onDiscoverClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/homepage-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/homepage-view.fxml", event);
     }
 
     @FXML
     void onConsultationClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/consultation-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/consultation-view.fxml", event);
     }
 
     @FXML
     void onMyListClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/myLists-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/myLists-view.fxml", event);
     }
 
 }

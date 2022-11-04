@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class MyListsUIController implements Initializable {
+public class MyListsUIController extends UIController implements Initializable {
 
     @FXML
     private ListView<Book> currentList;
@@ -63,25 +63,17 @@ public class MyListsUIController implements Initializable {
 
     @FXML
     void onProfileClick(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/settings-view.fxml")));
-        Scene scene = ((Node)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/settings-view.fxml", event);
+
     }
 
     @FXML
     void onDiscoverClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/homepage-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/homepage-view.fxml", event);
     }
 
     @FXML
     void onConsultationClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/consultation-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/consultation-view.fxml", event);
     }
 }

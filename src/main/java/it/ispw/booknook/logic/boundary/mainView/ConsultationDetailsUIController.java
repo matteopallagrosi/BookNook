@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ConsultationDetailsUIController implements Initializable {
+public class ConsultationDetailsUIController extends UIController implements Initializable {
 
     @FXML
     private DatePicker datePicker;
@@ -51,18 +51,12 @@ public class ConsultationDetailsUIController implements Initializable {
 
     @FXML
     void onDiscoverClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/homepage-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/homepage-view.fxml", event);
     }
 
     @FXML
     void onConsultationClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/consultation-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/consultation-view.fxml", event);
     }
 
     //selezione della data
@@ -103,20 +97,14 @@ public class ConsultationDetailsUIController implements Initializable {
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent() && result.get() == type) {
             //conferma la prenotazione, invia email, riporta alla schermata iniziale
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/consultation-view.fxml")));
-            Scene scene = ((Button)(event.getSource())).getScene();
-            scene.setRoot(root);
-            root.requestFocus();
+            changePage("/it/ispw/booknook/mainView/consultation-view.fxml", event);
         }
     }
 
     @FXML
     void onBackClick(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/it/ispw/booknook/mainView/consultation-view.fxml"));
-        Parent root = (Parent)fxmlLoader.load();
-        Scene scene = ((ImageView)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/consultation-view.fxml", event);
         ConsultationUIController controller = fxmlLoader.<ConsultationUIController>getController();
         ObservableList<String> items = FXCollections.observableArrayList("Primo", "Secondo", "Terzo", "Quarto",
                 "Quinto", "Sesto", "Settimo", "Ottavo");
@@ -125,17 +113,11 @@ public class ConsultationDetailsUIController implements Initializable {
 
     @FXML
     void onProfileClick(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/settings-view.fxml")));
-        Scene scene = ((Node)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/settings-view.fxml", event);
     }
 
     @FXML
     void onMyListClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/myLists-view.fxml")));
-        Scene scene = ((Node)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/myLists-view.fxml", event);
     }
 }
