@@ -79,7 +79,7 @@ public class ReaderUserDao {
         try {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = LogQueries.getpass(stmt, email);
+            ResultSet rs = LogQueries.getpass(conn, email);
 
             if (!rs.first()){ // rs empty
                 throw new Exception("No User Found matching with email and password");

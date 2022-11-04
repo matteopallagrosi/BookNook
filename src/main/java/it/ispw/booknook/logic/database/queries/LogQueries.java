@@ -16,14 +16,19 @@ public class LogQueries {
         return pstmt.executeUpdate( );  // ritorna il numero di righe inserite/aggiornate
     }
 
-    public static ResultSet selectReaderUser(Statement stat, String email, String password) throws SQLException {
-        String query = "SELECT email,password FROM utenti where email = '" + email + "' and password = '" + password + "';";
-        return stat.executeQuery(query);
+    public static ResultSet selectReaderUser(Connection connection, String email, String password) throws SQLException {
+        String query = "SELECT email,password FROM utenti where email = ? and password = ? ";
+        PreparedStatement pstmt = connection.prepareStatement( query );
+        pstmt.setString( 1, email);
+        pstmt.setString( 2, password);
+        return pstmt.executeQuery();
     }
 
-    public static ResultSet getpass(Statement stat, String email) throws SQLException {
-        String query = "SELECT password FROM utenti where email = '" + email + "';";
-        return stat.executeQuery(query);
+    public static ResultSet getpass(Connection connection, String email) throws SQLException {
+        String query = "SELECT password FROM utenti where email = ?";
+        PreparedStatement pstmt = connection.prepareStatement( query );
+        pstmt.setString( 1, email);
+        return pstmt.executeQuery();
     }
 
 
