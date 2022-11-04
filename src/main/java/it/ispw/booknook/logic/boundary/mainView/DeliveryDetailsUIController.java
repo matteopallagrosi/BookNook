@@ -12,36 +12,25 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.Objects;
 
-public class DeliveryDetailsUIController {
+public class DeliveryDetailsUIController extends UIController{
 
     @FXML
     void onConsultationClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/consultation-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/consultation-view.fxml", event);
     }
+
     @FXML
     void onProfileClick(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/settings-view.fxml")));
-        Scene scene = ((Node)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/settings-view.fxml", event);
     }
 
     @FXML
     void onMyListClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/myLists-view.fxml")));
-        Scene scene = ((Node)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/myLists-view.fxml", event);
     }
 
     @FXML
     void onDiscoverClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/homepage-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/homepage-view.fxml", event);
     }
 }
