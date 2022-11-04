@@ -13,28 +13,15 @@ public class ReaderUserDao {
 
     //registra un nuovo utente Reader nel sistema
     public static void registerReaderUser(ReaderUser user) {
-        Statement stmt = null;
         Connection conn = null;
 
         BookNookDB db = BookNookDB.getInstance();
         conn = db.getConn();
 
         try {
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-            //esegue la query, salva l'utente sul db
-            LogQueries.saveReaderUser(stmt, user);
+            LogQueries.saveReaderUser(conn, user);
         } catch(SQLException e) {
             e.printStackTrace();
-        }
-        finally {
-            try {
-                if(stmt != null) {
-                    stmt.close();
-                }
-            }catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
     }
 
