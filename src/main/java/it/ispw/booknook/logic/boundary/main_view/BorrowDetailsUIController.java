@@ -1,5 +1,13 @@
 package it.ispw.booknook.logic.boundary.main_view;
 
+import com.esri.arcgisruntime.ArcGISRuntimeEnvironment;
+import com.esri.arcgisruntime.geometry.Point;
+import com.esri.arcgisruntime.geometry.SpatialReference;
+import com.esri.arcgisruntime.geometry.SpatialReferences;
+import com.esri.arcgisruntime.mapping.ArcGISMap;
+import com.esri.arcgisruntime.mapping.BasemapStyle;
+import com.esri.arcgisruntime.mapping.Viewpoint;
+import com.esri.arcgisruntime.mapping.view.MapView;
 import it.ispw.booknook.logic.entity.Library;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,12 +16,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.web.WebView;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 public class BorrowDetailsUIController extends UIController implements Initializable {
 
@@ -21,16 +36,45 @@ public class BorrowDetailsUIController extends UIController implements Initializ
     private ListView<Library> libraryList;
 
     @FXML
-    private WebView map;
+    private AnchorPane mapPane;
+
+    private MapView mapView;
+
+    private static final int SCALE = 5000;
+
+    private SpatialReference spatialReference;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Creato controller");
+        ArcGISRuntimeEnvironment.setInstallDirectory("C:\\Users\\HP\\.arcgis\\100.15.0");
+        String yourApiKey = "AAPK26b105d18af3457a9265837b9abf295b5q_qht8-El1IQE4HeVuW13Owo8VQXOzKJwPJ9Bu4e_S9EO7YYER8Jn20YUSNe2lN";
+        ArcGISRuntimeEnvironment.setApiKey(yourApiKey);
+
+        // create a MapView to display the map and add it to the stack pane
+        mapView = new MapView();
+        mapView.setId("map");
+        mapPane.getChildren().add(mapView);
+        mapPane.lookup("#map").prefWidth(330);
+        mapPane.lookup("#map").prefHeight(220);
+        AnchorPane.setTopAnchor(mapView, 166.0);
+        AnchorPane.setLeftAnchor(mapView, 106.0);
+        AnchorPane.setRightAnchor(mapView, 91.0);
+        AnchorPane.setBottomAnchor(mapView, 15.0);
+
+        // create an ArcGISMap with an imagery basemap
+        ArcGISMap map = new ArcGISMap(BasemapStyle.ARCGIS_STREETS);
+
+        // display the map by setting the map on the map view
+        mapView.setMap(map);
+
+        mapView.setViewpoint(new Viewpoint(41.832553079101, 12.598051228413429, 5000));
+
         setListView();
-        map.getEngine().load("https://www.google.com/maps");
     }
 
+
     public void setListView()
+
     {
         Library library1 = new Library("London Library");
         Library library2 = new Library("London Library");

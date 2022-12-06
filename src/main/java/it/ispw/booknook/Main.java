@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/it/ispw/booknook/mainView/login-view.fxml"));
@@ -18,7 +19,6 @@ public class Main extends Application {
         stage.setScene(scene);
         root.requestFocus();
         stage.show();
-
     }
 
     public static void main(String[] args) {

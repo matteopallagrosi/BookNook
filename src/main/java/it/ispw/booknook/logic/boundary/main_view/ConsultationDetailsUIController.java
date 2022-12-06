@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,16 +22,13 @@ public class ConsultationDetailsUIController extends UIController implements Ini
     @FXML
     private DatePicker datePicker;
 
-    @FXML
-    private WebView map;
+
 
     private static final String PAGE_NAME = "/it/ispw/booknook/mainView/consultation-view.fxml";
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        map.getEngine().load("https://www.google.com/maps");
 
         datePicker.setStyle("-fx-focus-color: transparent;");
         datePicker.setDayCellFactory(p -> new DateCell() {

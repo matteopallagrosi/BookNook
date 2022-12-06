@@ -1,12 +1,12 @@
 module it.ispw.booknook {
-    requires javafx.controls;
-    requires javafx.fxml;
-
-    requires javafx.graphics;
-    requires javafx.web;
-    requires commons.validator;
     requires java.sql;
     requires bcrypt;
+    requires com.esri.arcgisruntime;
+    requires javafx.base;
+    requires javafx.fxml;
+    requires javafx.graphics;
+    requires javafx.controls;
+    requires commons.validator;
 
     opens it.ispw.booknook to javafx.fxml;
     exports it.ispw.booknook;
