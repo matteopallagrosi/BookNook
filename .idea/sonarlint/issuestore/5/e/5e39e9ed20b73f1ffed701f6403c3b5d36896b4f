@@ -1,7 +1,0 @@
-
-o
-java:S1450"TRemove the "items" field and declare it as a local variable in the relevant methods.(™íÿÏÿÿÿÿÿ
-S	java:S106/"9Replace this use of System.out or System.err by a logger.(ª„–Áüÿÿÿÿ
-T
-java:S1128"9Remove this unused import 'javafx.scene.image.ImageView'.(áÿ®Ãüÿÿÿÿ
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(«˜û

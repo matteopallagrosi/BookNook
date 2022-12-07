@@ -1,0 +1,10 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÓÅ¤úÿÿÿÿ
+\
+java:S1192"FDefine a constant instead of duplicating this literal "Drama" 4 times.(Ô˜¾û
+}
+java:S1192"gDefine a constant instead of duplicating this literal "Harry Potter and the Half-Blood Prince" 4 times.(Ô˜¾û
+`
+java:S1192"JDefine a constant instead of duplicating this literal "Teenagers" 4 times.(Ô˜¾û
+d
+java:S1192"NDefine a constant instead of duplicating this literal "J. K. Rowling" 4 times.(Ô˜¾û
