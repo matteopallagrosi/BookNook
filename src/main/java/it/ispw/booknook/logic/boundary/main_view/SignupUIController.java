@@ -13,7 +13,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.IOException;
 import java.util.Objects;
 
-public class SignupUIController {
+public class SignupUIController extends UIController {
 
     @FXML
     private TextField usernameTf;
@@ -115,5 +115,9 @@ public class SignupUIController {
 
     }
 
-
+    @FXML
+    void onContinueNoAccount(ActionEvent event) throws IOException {
+        //apre direttamente hompepage
+        changePage("/it/ispw/booknook/mainView/homepage-view.fxml", event);
+    }
 }

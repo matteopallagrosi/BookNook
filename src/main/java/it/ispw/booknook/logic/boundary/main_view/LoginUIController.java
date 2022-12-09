@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 
-public class LoginUIController {
+public class LoginUIController extends UIController {
 
     @FXML
     private TextField emailTf;
@@ -41,10 +41,7 @@ public class LoginUIController {
         //se corretti apre homepage
         if (controller.checkUserLogged(loginB)) {
             //apre hompepage
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/homepage-view.fxml")));
-            Scene scene = ((Button)(event.getSource())).getScene();
-            scene.setRoot(root);
-            root.requestFocus();
+            changePage("/it/ispw/booknook/mainView/homepage-view.fxml", event);
         }
         //altrimenti mostra messaggio d'errore
         else {
@@ -55,20 +52,13 @@ public class LoginUIController {
 
     @FXML
     void onSignupClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/signup-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
+        changePage("/it/ispw/booknook/mainView/signup-view.fxml", event);
     }
 
     @FXML
     void onContinueNoAccount(ActionEvent event) throws IOException {
         //apre direttamente hompepage
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/it/ispw/booknook/mainView/homepage-view.fxml")));
-        Scene scene = ((Button)(event.getSource())).getScene();
-        scene.setRoot(root);
-        root.requestFocus();
-
+        changePage("/it/ispw/booknook/mainView/homepage-view.fxml", event);
     }
 
 }

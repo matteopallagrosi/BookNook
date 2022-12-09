@@ -7,7 +7,12 @@ import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.BasemapStyle;
 import com.esri.arcgisruntime.mapping.Viewpoint;
+import com.esri.arcgisruntime.mapping.view.Graphic;
+import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
 import com.esri.arcgisruntime.mapping.view.MapView;
+import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
+import com.esri.arcgisruntime.symbology.SimpleRenderer;
+import com.esri.arcgisruntime.symbology.TextSymbol;
 import it.ispw.booknook.logic.entity.Library;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,9 +46,7 @@ public class BorrowDetailsUIController extends UIController implements Initializ
 
     private MapView mapView;
 
-    private static final int SCALE = 5000;
-
-    private SpatialReference spatialReference;
+    private GraphicsOverlay graphicsOverlay;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,7 +73,29 @@ public class BorrowDetailsUIController extends UIController implements Initializ
 
         mapView.setViewpoint(new Viewpoint(41.832553079101, 12.598051228413429, 5000));
 
+        // create a graphics overlay
+        graphicsOverlay = new GraphicsOverlay();
+
+        // create a map point for the Santa Monica pier
+        Point point = new Point(12.598051228413429, 41.832553079101, SpatialReferences.getWgs84());
+
+        // create a red (0xFFFF0000) circle simple marker symbol
+        SimpleMarkerSymbol redCircleSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.Style.CIRCLE, 0xFFFF0000, 20);
+
+        // create a graphic from the point and symbol
+        Graphic pointGraphic = new Graphic(point, redCircleSymbol);
+
+        graphicsOverlay.getGraphics().add(pointGraphic);
+        mapView.getGraphicsOverlays().add(graphicsOverlay);
+
         setListView();
+    }
+
+    private int getIntFromColor(int Red, int Green, int Blue){
+        Red = (Red << 16) & 0x00FF0000; //Shift red 16-bits and mask out other stuff
+        Green = (Green << 8) & 0x0000FF00; //Shift Green 8-bits and mask out other stuff
+        Blue = Blue & 0x000000FF; //Mask out anything not blue.
+        return 0xFF000000 | Red | Green | Blue; //0xFF000000 for 100% Alpha. Bitwise OR everything together.
     }
 
 

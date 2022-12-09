@@ -56,7 +56,7 @@ public class LoginBean {
 
     private boolean checkEmail(String email) { //controllo sintattico email
         EmailValidator validator = EmailValidator.getInstance();
-        return (email.isEmpty() || !validator.isValid(email));
+        return (!email.isEmpty() && validator.isValid(email));
     }
 
     private boolean checkPassword(String password) {  //controllo sintattico password

@@ -73,7 +73,6 @@ public class ReaderUserDao {
     } */
 
     public static String getPassUser(String email) throws Exception{
-        Statement stmt = null;
         Connection conn = null;
         String readerPassword = null;
 
@@ -82,8 +81,6 @@ public class ReaderUserDao {
         conn = db.getConn();
 
         try {
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = LogQueries.getpass(conn, email);
 
             if (!rs.first()){ // rs empty
@@ -100,16 +97,6 @@ public class ReaderUserDao {
         } catch(SQLException e) {
             Logger logger = Logger.getLogger("MyLog");
             logger.log(Level.INFO, "This is message 1", e);
-        }
-        finally {
-            try {
-                if(stmt != null) {
-                    stmt.close();
-                }
-            }catch (SQLException e) {
-                Logger logger = Logger.getLogger("MyLog");
-                logger.log(Level.INFO, "This is message 1", e);
-            }
         }
         return readerPassword;
     }
