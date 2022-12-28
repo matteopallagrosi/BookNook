@@ -21,7 +21,6 @@ public class ReaderUserDao {
 
         BookNookDB db = BookNookDB.getInstance();
         conn = db.getConn();
-
         try {
             LogQueries.saveReaderUser(conn, user);
         } catch(SQLException e) {
@@ -79,6 +78,7 @@ public class ReaderUserDao {
 
         BookNookDB db = BookNookDB.getInstance();
         conn = db.getConn();
+
 
         try {
             ResultSet rs = LogQueries.getpass(conn, email);

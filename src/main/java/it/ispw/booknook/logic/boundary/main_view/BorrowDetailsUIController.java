@@ -13,12 +13,15 @@ import com.esri.arcgisruntime.mapping.view.MapView;
 import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
 import com.esri.arcgisruntime.symbology.SimpleRenderer;
 import com.esri.arcgisruntime.symbology.TextSymbol;
+import it.ispw.booknook.logic.bean.BookBean;
+import it.ispw.booknook.logic.control.BorrowBookController;
 import it.ispw.booknook.logic.entity.Library;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -36,7 +39,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
-public class BorrowDetailsUIController extends UIController implements Initializable {
+public class BorrowDetailsUIController extends UIController {
 
     @FXML
     private ListView<Library> libraryList;
@@ -48,11 +51,18 @@ public class BorrowDetailsUIController extends UIController implements Initializ
 
     private GraphicsOverlay graphicsOverlay;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArcGISRuntimeEnvironment.setInstallDirectory("C:\\Users\\HP\\.arcgis\\100.15.0");
-        String k = "AAPK26b105d18af3457a9265837b9abf295b5q_qht8-El1IQE4HeVuW13Owo8VQXOzKJwPJ9Bu4e_S9EO7YYER8Jn20YUSNe2lN";
-        ArcGISRuntimeEnvironment.setApiKey(k);
+    @FXML
+    private Label introLabel;
+
+
+    public void displayLibraryList(String ISBN, String title) {
+        introLabel.setText("'" + title + "' is available in the following libraries.");
+
+
+        BorrowBookController controller = new BorrowBookController();
+        BookBean book = new BookBean();
+        book.setISBN(ISBN);
+        controller.calculateLibraries(book);
 
         // create a MapView to display the map and add it to the stack pane
         mapView = new MapView();

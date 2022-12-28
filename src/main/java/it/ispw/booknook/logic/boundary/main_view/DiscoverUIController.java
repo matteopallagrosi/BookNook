@@ -2,10 +2,18 @@ package it.ispw.booknook.logic.boundary.main_view;
 
 import it.ispw.booknook.logic.bean.BookBean;
 import it.ispw.booknook.logic.control.BorrowBookController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -15,10 +23,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class DiscoverUIController extends UIController {
+public class DiscoverUIController extends UIController implements Initializable {
 
     @FXML
     private TextField searchField;
@@ -41,18 +51,29 @@ public class DiscoverUIController extends UIController {
     @FXML
     private Button thrillerBtn;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        resultList.setOnMouseClicked(mouseEvent -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/ispw/booknook/mainView/bookorder-view.fxml"));
+                Parent root = loader.load();
+                ResultsUIController controller = loader.getController();
+                controller.setListView(resultList.getSelectionModel().getSelectedItem());
+                Scene scene = ((Node)(mouseEvent.getSource())).getScene();
+                scene.setRoot(root);
+                root.requestFocus();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
 
     @FXML
     void onConsultationClick(ActionEvent event) throws IOException {
         changePage("/it/ispw/booknook/mainView/consultation-view.fxml", event);
     }
-
-    @FXML
-    void onSearchClick(MouseEvent event) throws IOException {
-        changePage("/it/ispw/booknook/mainView/bookorder-view.fxml", event);
-        //riempire la lista dei libri risultanti nella schermata successiva
-    }
-
 
     @FXML
     void onProfileClick(MouseEvent event) throws IOException {
@@ -77,14 +98,9 @@ public class DiscoverUIController extends UIController {
             BookBean searchedBook = new BookBean(searchedTx);
             BorrowBookController controller = new BorrowBookController();
 
-            List<String> results = controller.borrowByName(searchedBook);
+            List<BookBean> results = controller.borrowByName(searchedBook);
             resultList.getItems().clear();
-            resultList.getItems().addAll(results);
-            categoriesLabel.setVisible(false);
-            scifiBtn.setVisible(false);
-            romanceBtn.setVisible(false);
-            thrillerBtn.setVisible(false);
-            adventureBtn.setVisible(false);
+            results.forEach(bookBean -> resultList.getItems().add(bookBean.getTitle() + ", " + bookBean.getAuthor()));
             resultList.setVisible(true);
     }
 

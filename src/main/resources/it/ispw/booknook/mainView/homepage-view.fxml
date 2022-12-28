@@ -20,32 +20,32 @@
    <center>
       <BorderPane fx:id="homePage" prefHeight="325.0" prefWidth="900.0" stylesheets="@home.css">
          <center>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="51.0" layoutX="63.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0; -fx-arc-height: 10; -fx-arc-width: 10;" width="515.0" AnchorPane.leftAnchor="63.0" AnchorPane.topAnchor="137.0" />
-                  <TextField fx:id="searchField" layoutX="99.0" layoutY="144.0" onAction="#borrowBookByName" prefHeight="38.0" prefWidth="442.0" promptText="Type the title or the author of a book you like to read" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="99.0" AnchorPane.topAnchor="144.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="51.0" layoutX="63.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0; -fx-arc-height: 10; -fx-arc-width: 10;" width="515.0" AnchorPane.leftAnchor="63.0" AnchorPane.topAnchor="110.0" />
+                  <TextField fx:id="searchField" layoutX="99.0" layoutY="116.0" onAction="#borrowBookByName" prefHeight="38.0" prefWidth="442.0" promptText="Type the title or the author of a book you like to read" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="99.0" AnchorPane.topAnchor="116.0">
                      <font>
                         <Font name="Roboto Medium" size="17.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="162.0" layoutY="43.0" text="Discover books to read!" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="43.0">
+                  <Label layoutX="162.0" layoutY="28.0" text="Discover books to read!" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="28.0">
                      <font>
                         <Font name="Roboto Medium" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="searchBtn" fitHeight="31.0" fitWidth="38.0" layoutX="73.0" layoutY="148.0" onMouseClicked="#onSearchClick" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="searchBtn" fitHeight="31.0" fitWidth="38.0" layoutX="68.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@search_icon.png" />
                      </image>
                   </ImageView>
-                  <ListView fx:id="resultList" layoutX="64.0" layoutY="188.0" prefHeight="219.0" prefWidth="514.0" visible="false" />
+                  <ListView fx:id="resultList" layoutX="63.0" layoutY="161.0" prefHeight="129.0" prefWidth="514.0" visible="false" />
                </children>
             </AnchorPane>
          </center>
       </BorderPane>
    </center>
    <bottom>
-      <BorderPane prefHeight="232.0" prefWidth="900.0">
+      <BorderPane prefHeight="200.0" prefWidth="900.0">
          <center>
             <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="732.0" BorderPane.alignment="CENTER">
               <columnConstraints>
