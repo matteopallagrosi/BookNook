@@ -1,8 +1,6 @@
 package it.ispw.booknook.logic.boundary.main_view;
 
-import com.esri.arcgisruntime.ArcGISRuntimeEnvironment;
 import com.esri.arcgisruntime.geometry.Point;
-import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.BasemapStyle;
@@ -11,8 +9,6 @@ import com.esri.arcgisruntime.mapping.view.Graphic;
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
 import com.esri.arcgisruntime.mapping.view.MapView;
 import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
-import com.esri.arcgisruntime.symbology.SimpleRenderer;
-import com.esri.arcgisruntime.symbology.TextSymbol;
 import it.ispw.booknook.logic.bean.BookBean;
 import it.ispw.booknook.logic.control.BorrowBookController;
 import it.ispw.booknook.logic.entity.Library;
@@ -20,23 +16,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public class BorrowDetailsUIController extends UIController {
@@ -61,7 +47,7 @@ public class BorrowDetailsUIController extends UIController {
 
         BorrowBookController controller = new BorrowBookController();
         BookBean book = new BookBean();
-        book.setISBN(ISBN);
+        book.setIsbn(ISBN);
         controller.calculateLibraries(book);
 
         // create a MapView to display the map and add it to the stack pane

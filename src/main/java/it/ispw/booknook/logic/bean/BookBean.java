@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.util.List;
 
 public class BookBean {
-    private String ISBN;
+    private String isbn;
     private String title;
     private String author;
     private List<String> tags;
@@ -25,7 +25,7 @@ public class BookBean {
         this.author = book.getAuthor();
         this.tags = book.getTags();
         this.cover = book.getCover();
-        this.ISBN = book.getISBN();
+        this.isbn = book.getISBN();
 
     }
 
@@ -62,12 +62,12 @@ public class BookBean {
     }
 
 
-    public String getISBN() {
-        return ISBN;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public Image getCoverImage() {

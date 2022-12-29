@@ -2,14 +2,12 @@ package it.ispw.booknook.logic.boundary.main_view;
 
 import it.ispw.booknook.logic.bean.BookBean;
 import it.ispw.booknook.logic.control.BorrowBookController;
-import it.ispw.booknook.logic.entity.Book;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,15 +16,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class ResultsUIController extends UIController {
 
@@ -67,7 +60,7 @@ public class ResultsUIController extends UIController {
             box.getChildren().add(tagBtn);
         });
 
-        String ISBN = results.get(0).getISBN();
+        String ISBN = results.get(0).getIsbn();
 
         //L'utente ha selezionato il libro principale
         borrowBtn.setOnAction(new EventHandler<ActionEvent>() {

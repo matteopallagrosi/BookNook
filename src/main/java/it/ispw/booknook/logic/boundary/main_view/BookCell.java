@@ -1,7 +1,6 @@
 package it.ispw.booknook.logic.boundary.main_view;
 
 import it.ispw.booknook.logic.bean.BookBean;
-import it.ispw.booknook.logic.entity.Book;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,7 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -94,7 +92,7 @@ public class BookCell {
                     e.printStackTrace();
                 }
                 BorrowDetailsUIController controller = loader.getController();
-                controller.displayLibraryList(book.getISBN(), title.getText());
+                controller.displayLibraryList(book.getIsbn(), title.getText());
                 Scene scene = ((Node)(actionEvent.getSource())).getScene();
                 scene.setRoot(root);
                 root.requestFocus();

@@ -19,12 +19,14 @@ import java.util.logging.Logger;
 
 public class JSONManager {
 
+    private JSONManager() {}
+
     public static JSONObject getJsonFromUrl(String ISBN) {
-        Properties p = new Properties();
+        Properties properties = new Properties();
         String k = null;
         try (FileInputStream f = new FileInputStream("C:\\Users\\HP\\IdeaProjects\\BookNook\\src\\main\\resources\\googleconfig.properties")) {
-            p.load(f);
-            k = p.getProperty("key");
+            properties.load(f);
+            k = properties.getProperty("key");
         } catch (IOException e) {
             Logger logger = Logger.getLogger("MyLog");
             logger.log(Level.INFO, "This is message 1", e);

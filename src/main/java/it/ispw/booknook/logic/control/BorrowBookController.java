@@ -8,7 +8,6 @@ import it.ispw.booknook.logic.database.dao.LibraryDao;
 import it.ispw.booknook.logic.entity.Book;
 import it.ispw.booknook.logic.entity.Library;
 import javafx.scene.image.Image;
-import org.apache.commons.validator.routines.checkdigit.ISBN10CheckDigit;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -44,8 +43,8 @@ public class BorrowBookController {
         related.add(0, bookBean);  //aggiunge il libro selezionato alla lista
 
         related.forEach(bookBean1 -> {
-            bookBean1.setTags(BookDao.getTagsByISBN(bookBean1.getISBN()));
-            JSONObject myResponse = JSONManager.getJsonFromUrl(bookBean1.getISBN());
+            bookBean1.setTags(BookDao.getTagsByISBN(bookBean1.getIsbn()));
+            JSONObject myResponse = JSONManager.getJsonFromUrl(bookBean1.getIsbn());
             String url = JSONManager.getImageURL(myResponse);
             bookBean1.setCover(url);
             bookBean1.setCoverImage(new Image(url));
@@ -123,11 +122,11 @@ public class BorrowBookController {
 
     //recupera la lista di biblioteche con disponibilità del libro richiesto
     public void calculateLibraries(BookBean book) {
-        HashMap<String, Library> libraries = LibraryDao.getLibrariesByISBN(book.getISBN());
+        HashMap<String, Library> libraries = LibraryDao.getLibrariesByISBN(book.getIsbn());
         libraries.forEach((name, library) -> {
             LibraryBean bean = new LibraryBean();
             library.getOwnedCopies().forEach(copy-> System.out.println("copia: "+ copy.getId() + "della bilbioteca " + copy.getLibrary().getName()));
-            System.out.println(library.getAvailability(book.getISBN()));
+            System.out.println(library.getAvailability(book.getIsbn()));
         });
 
         //TODO
