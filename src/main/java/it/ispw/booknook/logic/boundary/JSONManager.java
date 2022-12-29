@@ -1,21 +1,35 @@
 package it.ispw.booknook.logic.boundary;
 
+import com.esri.arcgisruntime.ArcGISRuntimeEnvironment;
 import it.ispw.booknook.logic.entity.Book;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class JSONManager {
 
     public static JSONObject getJsonFromUrl(String ISBN) {
-        String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + ISBN + "&key=AIzaSyCzJIp5Ex-gqiy1CwwjovsG-Y6i_-B6asE";
+        Properties p = new Properties();
+        String k = null;
+        try (FileInputStream f = new FileInputStream("C:\\Users\\HP\\IdeaProjects\\BookNook\\src\\main\\resources\\googleconfig.properties")) {
+            p.load(f);
+            k = p.getProperty("key");
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
+        }
+        String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + ISBN + "&key=" + k;
         JSONObject myResponse = null;
         try {
             URL url = new URL(urlString);
