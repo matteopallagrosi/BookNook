@@ -1,7 +1,6 @@
 package it.ispw.booknook.logic.boundary.main_view;
 
 import it.ispw.booknook.logic.bean.BookBean;
-import it.ispw.booknook.logic.entity.Book;
 import javafx.scene.control.ListCell;
 
 public class ListViewCell extends ListCell<BookBean>
@@ -11,7 +10,7 @@ public class ListViewCell extends ListCell<BookBean>
     {
         super.updateItem(book,empty);
 
-        if(book != null)
+        if(book != null && !empty)
         {
             BookCell data = new BookCell();
             //setta contenuto della cella

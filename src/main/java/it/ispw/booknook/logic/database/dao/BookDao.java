@@ -2,7 +2,6 @@ package it.ispw.booknook.logic.database.dao;
 
 import it.ispw.booknook.logic.database.BookNookDB;
 import it.ispw.booknook.logic.database.queries.BookQueries;
-import it.ispw.booknook.logic.database.queries.LogQueries;
 import it.ispw.booknook.logic.entity.Book;
 
 import java.sql.Connection;

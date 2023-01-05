@@ -1,17 +1,13 @@
 package it.ispw.booknook.logic.boundary;
 
-import com.esri.arcgisruntime.ArcGISRuntimeEnvironment;
-import it.ispw.booknook.logic.entity.Book;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -21,7 +17,7 @@ public class JSONManager {
 
     private JSONManager() {}
 
-    public static JSONObject getJsonFromUrl(String ISBN) {
+    public static JSONObject getJsonFromUrl(String isbn) {
         Properties properties = new Properties();
         String k = null;
         try (FileInputStream f = new FileInputStream("C:\\Users\\HP\\IdeaProjects\\BookNook\\src\\main\\resources\\googleconfig.properties")) {
@@ -31,7 +27,7 @@ public class JSONManager {
             Logger logger = Logger.getLogger("MyLog");
             logger.log(Level.INFO, "This is message 1", e);
         }
-        String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + ISBN + "&key=" + k;
+        String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn + "&key=" + k;
         JSONObject myResponse = null;
         try {
             URL url = new URL(urlString);
@@ -39,7 +35,7 @@ public class JSONManager {
             int responseCode = con.getResponseCode();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
-            StringBuffer response = new StringBuffer();
+            StringBuilder response = new StringBuilder();
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }

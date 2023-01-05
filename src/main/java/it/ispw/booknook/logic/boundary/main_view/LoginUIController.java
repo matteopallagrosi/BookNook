@@ -2,19 +2,15 @@ package it.ispw.booknook.logic.boundary.main_view;
 
 import it.ispw.booknook.logic.bean.LoginBean;
 import it.ispw.booknook.logic.control.LoginController;
+import it.ispw.booknook.logic.entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
-import java.util.Objects;
 
 
 public class LoginUIController extends UIController {

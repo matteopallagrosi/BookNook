@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class BookQueries {
 
@@ -40,6 +39,15 @@ public class BookQueries {
         pstmt.setString( 1, tag);
         pstmt.setString(2, isbn);
         return pstmt.executeQuery();
+    }
+
+    public static int insertBookInList(Connection connection, String reader, String listName, String ISBN) throws SQLException {
+        String query = "INSERT INTO liste_lettura (lettore, nome, ISBN) VALUES (?, ?,?)";
+        PreparedStatement pstmt = connection.prepareStatement(query);
+        pstmt.setString( 1, reader);
+        pstmt.setString(2, listName);
+        pstmt.setString(3, ISBN);
+        return pstmt.executeUpdate();  //ritorna il numero di righe inserite
     }
 
 

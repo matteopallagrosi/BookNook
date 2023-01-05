@@ -1,9 +1,6 @@
 package it.ispw.booknook.logic.database;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;

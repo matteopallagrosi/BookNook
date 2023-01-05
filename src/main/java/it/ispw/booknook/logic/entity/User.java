@@ -1,19 +1,30 @@
 package it.ispw.booknook.logic.entity;
 
-public class ReaderUser {
 
+//Singleton
+public class User {
+
+    private static User user = null;
     private String username;
     private String email;
     private String password;
     private String name;
     private String surname;
+    private UserType type;
 
-    public ReaderUser(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.name = null;
-        this.surname = null;
+    private User() {}
+
+    public static User getUser() {
+        if (user == null)
+            User.user = new User();
+        return user;
+    }
+
+    public void setLogDetails(String username, String email, String password,UserType type) {
+        setUsername(username);
+        setEmail(email);
+        setPassword(password);
+        setType(type);
     }
 
     public String getUsername() {
@@ -56,5 +67,15 @@ public class ReaderUser {
         this.surname = surname;
     }
 
+    public UserType getType() {
+        return type;
+    }
 
+    public void setType(UserType type) {
+        this.type = type;
+    }
+
+    public static boolean isLogged() {
+        return user != null;
+    }
 }

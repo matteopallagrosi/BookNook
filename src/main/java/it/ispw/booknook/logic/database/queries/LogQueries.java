@@ -1,6 +1,6 @@
 package it.ispw.booknook.logic.database.queries;
 
-import it.ispw.booknook.logic.entity.ReaderUser;
+import it.ispw.booknook.logic.entity.User;
 
 import java.sql.*;
 
@@ -8,7 +8,7 @@ public class LogQueries {
 
     private LogQueries() {}
 
-    public static int saveReaderUser(Connection connection, ReaderUser user) throws SQLException {
+    public static int saveReaderUser(Connection connection, User user) throws SQLException {
         String query = String.format("INSERT INTO utenti (username, email, password) VALUES (?, ?,?)");
         PreparedStatement pstmt = connection.prepareStatement( query );
         pstmt.setString( 1, user.getUsername());
@@ -18,11 +18,10 @@ public class LogQueries {
         return pstmt.executeUpdate( );  // ritorna il numero di righe inserite/aggiornate
     }
 
-    public static ResultSet selectReaderUser(Connection connection, String email, String password) throws SQLException {
-        String query = "SELECT email,password FROM utenti where email = ? and password = ? ";
+    public static ResultSet selectReaderUser(Connection connection, String email) throws SQLException {
+        String query = "SELECT * FROM utenti where email = ?";
         PreparedStatement pstmt = connection.prepareStatement( query );
         pstmt.setString( 1, email);
-        pstmt.setString( 2, password);
         return pstmt.executeQuery();
     }
 

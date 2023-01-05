@@ -121,16 +121,18 @@ public class BorrowBookController {
     }
 
     //recupera la lista di biblioteche con disponibilità del libro richiesto
-    public void calculateLibraries(BookBean book) {
+    public List<LibraryBean> calculateLibraries(BookBean book) {
         HashMap<String, Library> libraries = LibraryDao.getLibrariesByISBN(book.getIsbn());
+        List<LibraryBean> libraryList = new ArrayList<LibraryBean>();
         libraries.forEach((name, library) -> {
-            LibraryBean bean = new LibraryBean();
-            library.getOwnedCopies().forEach(copy-> System.out.println("copia: "+ copy.getId() + "della bilbioteca " + copy.getLibrary().getName()));
-            System.out.println(library.getAvailability(book.getIsbn()));
+            LibraryBean bean = new LibraryBean(library);
+            bean.setAvailability(library.getAvailability(book.getIsbn()));
+            libraryList.add(bean);
+            /* library.getOwnedCopies().forEach(copy-> System.out.println("copia: "+ copy.getId() + "della bilbioteca " + copy.getLibrary().getName()));
+            System.out.println(library.getAvailability(book.getIsbn())); */
         });
 
-        //TODO
-
+        return libraryList;
     }
 
 

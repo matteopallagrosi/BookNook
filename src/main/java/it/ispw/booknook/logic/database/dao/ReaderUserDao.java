@@ -2,12 +2,12 @@ package it.ispw.booknook.logic.database.dao;
 
 import it.ispw.booknook.logic.database.BookNookDB;
 import it.ispw.booknook.logic.database.queries.LogQueries;
-import it.ispw.booknook.logic.entity.ReaderUser;
+import it.ispw.booknook.logic.entity.User;
+import it.ispw.booknook.logic.entity.UserType;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,7 +16,7 @@ public class ReaderUserDao {
     private ReaderUserDao() {}
 
     //registra un nuovo utente Reader nel sistema
-    public static void registerReaderUser(ReaderUser user) {
+    public static void registerReaderUser(User user) {
         Connection conn = null;
 
         BookNookDB db = BookNookDB.getInstance();
@@ -30,18 +30,15 @@ public class ReaderUserDao {
     }
 
     //recupera un utente dal db se presente
-   /* public static ReaderUser getReaderUser(String email, String password) throws Exception{
-        Statement stmt = null;
+   public static User getReaderUser(String email) throws Exception{
         Connection conn = null;
-        ReaderUser user = null;
+        User user = null;
 
         BookNookDB db = BookNookDB.getInstance();
         conn = db.getConn();
 
         try {
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = LogQueries.selectReaderUser(stmt, email, password);
+            ResultSet rs = LogQueries.selectReaderUser(conn, email);
 
             if (!rs.first()){ // rs empty
                 throw new Exception("No User Found matching with email and password");
@@ -50,26 +47,31 @@ public class ReaderUserDao {
             //altrimenti l'utente è presente
             rs.first();
 
-            String readerEmail = rs.getString("email");
-            String readerPassword = rs.getString("password");
+            String username = rs.getString("username");
+            String userEmail = rs.getString("email");
+            String password = rs.getString("password");
+            String type = rs.getString("tipo");
 
-            user = new ReaderUser(readerEmail, readerPassword);
+            UserType userType = UserType.READER;
+            switch(type) {
+                case "lettore":
+                    userType = UserType.READER;
+                    break;
+                case "bibliotecario":
+                    userType = UserType.LIBRARIAN;
+                    break;
+            }
+
+            user = User.getUser();
+            user.setLogDetails(username, userEmail, password, userType);
             rs.close();
 
         } catch(SQLException e) {
             e.printStackTrace();
         }
-        finally {
-            try {
-                if(stmt != null) {
-                    stmt.close();
-                }
-            }catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+
         return user;
-    } */
+    }
 
     public static String getPassUser(String email) throws Exception{
         Connection conn = null;
@@ -91,6 +93,7 @@ public class ReaderUserDao {
             rs.first();
 
             readerPassword = rs.getString("password");
+
 
             rs.close();
 

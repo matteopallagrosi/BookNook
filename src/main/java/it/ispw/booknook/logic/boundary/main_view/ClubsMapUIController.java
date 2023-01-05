@@ -1,6 +1,5 @@
 package it.ispw.booknook.logic.boundary.main_view;
 
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;

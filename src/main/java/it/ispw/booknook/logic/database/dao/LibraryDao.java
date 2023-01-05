@@ -1,7 +1,6 @@
 package it.ispw.booknook.logic.database.dao;
 
 import it.ispw.booknook.logic.database.BookNookDB;
-import it.ispw.booknook.logic.database.queries.BookQueries;
 import it.ispw.booknook.logic.database.queries.LibraryQueries;
 import it.ispw.booknook.logic.entity.Book;
 import it.ispw.booknook.logic.entity.BookCopy;
@@ -10,9 +9,7 @@ import it.ispw.booknook.logic.entity.Library;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
