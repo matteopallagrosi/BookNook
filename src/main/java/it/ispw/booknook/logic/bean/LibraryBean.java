@@ -2,10 +2,6 @@ package it.ispw.booknook.logic.bean;
 
 import it.ispw.booknook.logic.entity.Library;
 
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 public class LibraryBean {
     private String name;
     private String address;

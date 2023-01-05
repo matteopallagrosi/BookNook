@@ -64,7 +64,7 @@ public class BookDao {
                 throw new Exception("No Books found matching with title or author");
             }
 
-            book.setISBN(rs.getString("ISBN"));
+            book.setIsbn(rs.getString("ISBN"));
             book.setTitle(rs.getString("titolo"));
             book.setAuthor(rs.getString("autore"));
             book.setPublisher(rs.getString("editore"));
@@ -81,7 +81,7 @@ public class BookDao {
 
         //recupera i tag associati a quel libro
         try {
-            ResultSet rs = BookQueries.getTags(conn, book.getISBN());
+            ResultSet rs = BookQueries.getTags(conn, book.getIsbn());
 
             if (!rs.first()){ // rs empty
                 throw new Exception("No Books found matching with title or author");
@@ -147,7 +147,7 @@ public class BookDao {
                 ResultSet rs = BookQueries.getBooksByTags(conn, isbn, tags.get(i));
                 while(rs.next()){
                     Book book = new Book();
-                    book.setISBN(rs.getString("libri.ISBN"));
+                    book.setIsbn(rs.getString("libri.ISBN"));
                     book.setTitle(rs.getString("titolo"));
                     book.setAuthor(rs.getString("autore"));
                     book.setPublisher(rs.getString("editore"));

@@ -9,7 +9,7 @@ public class LogQueries {
     private LogQueries() {}
 
     public static int saveReaderUser(Connection connection, User user) throws SQLException {
-        String query = String.format("INSERT INTO utenti (username, email, password) VALUES (?, ?,?)");
+        String query = "INSERT INTO utenti (username, email, password) VALUES (?, ?,?)";
         PreparedStatement pstmt = connection.prepareStatement( query );
         pstmt.setString( 1, user.getUsername());
         pstmt.setString( 2, user.getEmail());

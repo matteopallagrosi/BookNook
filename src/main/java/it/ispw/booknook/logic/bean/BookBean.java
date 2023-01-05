@@ -25,7 +25,7 @@ public class BookBean {
         this.author = book.getAuthor();
         this.tags = book.getTags();
         this.cover = book.getCover();
-        this.isbn = book.getISBN();
+        this.isbn = book.getIsbn();
 
     }
 

@@ -52,15 +52,11 @@ public class ReaderUserDao {
             String password = rs.getString("password");
             String type = rs.getString("tipo");
 
-            UserType userType = UserType.READER;
-            switch(type) {
-                case "lettore":
-                    userType = UserType.READER;
-                    break;
-                case "bibliotecario":
-                    userType = UserType.LIBRARIAN;
-                    break;
-            }
+            UserType userType = switch (type) {
+                case "lettore" -> UserType.READER;
+                case "bibliotecario" -> UserType.LIBRARIAN;
+                default -> UserType.READER;
+            };
 
             user = User.getUser();
             user.setLogDetails(username, userEmail, password, userType);

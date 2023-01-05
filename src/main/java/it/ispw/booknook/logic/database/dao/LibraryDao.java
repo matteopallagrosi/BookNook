@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,16 +18,16 @@ public class LibraryDao {
 
     private LibraryDao(){}
 
-    public static HashMap<String, Library> getLibrariesByISBN(String ISBN){
+    public static Map<String, Library> getLibrariesByISBN(String isbn){
         HashMap<String, Library> libraries = new HashMap<>();
         Connection conn = null;
-        Book book = new Book(ISBN);
+        Book book = new Book(isbn);
 
 
         BookNookDB db = BookNookDB.getInstance();
         conn = db.getConn();
         try {
-            ResultSet rs = LibraryQueries.getLibraries(conn, ISBN);
+            ResultSet rs = LibraryQueries.getLibraries(conn, isbn);
 
             while(rs.next()){ // rs empty
             String name = rs.getString("nome");

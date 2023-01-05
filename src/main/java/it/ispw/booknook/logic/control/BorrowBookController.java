@@ -10,10 +10,7 @@ import it.ispw.booknook.logic.entity.Library;
 import javafx.scene.image.Image;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class BorrowBookController {
 
@@ -38,7 +35,7 @@ public class BorrowBookController {
 
         BookBean bookBean = new BookBean(book);
 
-        List<BookBean> related = calculateBookList(book.getTags(), book.getISBN());
+        List<BookBean> related = calculateBookList(book.getTags(), book.getIsbn());
 
         related.add(0, bookBean);  //aggiunge il libro selezionato alla lista
 
@@ -54,8 +51,8 @@ public class BorrowBookController {
     }
 
     //recupera la lista dei libri simili a quello selezionato
-    private List<BookBean> calculateBookList(List<String> tags, String ISBN) {
-        List<Book> books = BookDao.getRelatedBooks(tags, ISBN);
+    private List<BookBean> calculateBookList(List<String> tags, String isbn) {
+        List<Book> books = BookDao.getRelatedBooks(tags, isbn);
         //continua qui!
         return sortByOccurrences(books);
     }
@@ -64,10 +61,10 @@ public class BorrowBookController {
         HashMap<String, List<Book>> map = new HashMap<>();
 
         for (Book book : books) {
-            List<Book> booksWithSameISBN = map.get(book.getISBN());
+            List<Book> booksWithSameISBN = map.get(book.getIsbn());
             if (booksWithSameISBN == null) { //does not exist in map yet
                 booksWithSameISBN = new ArrayList<Book>();
-                map.put(book.getISBN(), booksWithSameISBN);
+                map.put(book.getIsbn(), booksWithSameISBN);
             }
             booksWithSameISBN.add(book); //now add the item to the list for this key
         }
@@ -97,7 +94,7 @@ public class BorrowBookController {
 
             @Override
             public String toString() {
-                return "Data{"+this.book.getISBN()+"}";
+                return "Data{"+this.book.getIsbn()+"}";
             }
         }
 
@@ -122,7 +119,7 @@ public class BorrowBookController {
 
     //recupera la lista di biblioteche con disponibilità del libro richiesto
     public List<LibraryBean> calculateLibraries(BookBean book) {
-        HashMap<String, Library> libraries = LibraryDao.getLibrariesByISBN(book.getIsbn());
+        Map<String, Library> libraries = LibraryDao.getLibrariesByISBN(book.getIsbn());
         List<LibraryBean> libraryList = new ArrayList<LibraryBean>();
         libraries.forEach((name, library) -> {
             LibraryBean bean = new LibraryBean(library);

@@ -60,7 +60,7 @@ public class ResultsUIController extends UIController {
             box.getChildren().add(tagBtn);
         });
 
-        String ISBN = results.get(0).getIsbn();
+        String isbn = results.get(0).getIsbn();
 
         //L'utente ha selezionato il libro principale
         borrowBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -74,7 +74,7 @@ public class ResultsUIController extends UIController {
                     e.printStackTrace();
                 }
                 BorrowDetailsUIController controller = loader.getController();
-                controller.displayLibraryList(ISBN, title.getText());
+                controller.displayLibraryList(isbn, title.getText());
                 Scene scene = ((Node)(actionEvent.getSource())).getScene();
                 scene.setRoot(root);
                 root.requestFocus();

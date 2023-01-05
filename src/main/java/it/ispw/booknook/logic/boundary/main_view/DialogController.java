@@ -21,6 +21,8 @@ public class DialogController {
     private static final String LOGIN = "Login";
     private static final String SIGNUP = "Sign up";
     private static final String STYLESHEET = "/it/ispw/booknook/mainView/buttonYellow.css";
+    private static final String CANCEL = "Cancel";
+    private static final String STYLE = "-fx-font-size: 15px;" + "-fx-font-family: Roboto ";
 
     public void createLoginDialog() {
         Dialog<User> dialog = new Dialog<>();
@@ -56,7 +58,7 @@ public class DialogController {
         dialog.getDialogPane().setContent(grid);
 
         ButtonType buttonTypeOk = new ButtonType("Confirm", ButtonBar.ButtonData.OK_DONE);
-        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType buttonTypeCancel = new ButtonType(CANCEL, ButtonBar.ButtonData.CANCEL_CLOSE);
 
         dialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
         dialog.getDialogPane().getButtonTypes().add(buttonTypeCancel);
@@ -125,9 +127,8 @@ public class DialogController {
         d.setTitle("Delivery method");
         d.setHeaderText("Delivery method");
         d.setContentText("Choose your delivery method");
-        d.getDialogPane().setStyle("-fx-font-size: 15px;" +
-                "-fx-font-family: Roboto ");
-        ((Button) d.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cancel");
+        d.getDialogPane().setStyle(STYLE);
+        ((Button) d.getDialogPane().lookupButton(ButtonType.CANCEL)).setText(CANCEL);
         d.getDialogPane().getStylesheets().add(
                 Objects.requireNonNull(getClass().getResource(STYLESHEET)).toExternalForm());
         Optional result =  d.showAndWait();
@@ -159,11 +160,10 @@ public class DialogController {
         dialogPickup.setTitle("In-library Pickup");
         dialogPickup.setContentText("You can pick up your book within three days.");
         ButtonType confirm = new ButtonType("Confirm", ButtonBar.ButtonData.OK_DONE);
-        ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType cancel = new ButtonType(CANCEL, ButtonBar.ButtonData.CANCEL_CLOSE);
         dialogPickup.getDialogPane().getButtonTypes().add(confirm);
         dialogPickup.getDialogPane().getButtonTypes().add(cancel);
-        dialogPickup.getDialogPane().setStyle("-fx-font-size: 15px;" +
-                "-fx-font-family: Roboto ");
+        dialogPickup.getDialogPane().setStyle(STYLE);
         dialogPickup.getDialogPane().getStylesheets().add(
                 Objects.requireNonNull(getClass().getResource(STYLESHEET)).toExternalForm());
         Optional<ButtonType> result = dialogPickup.showAndWait();
@@ -177,8 +177,7 @@ public class DialogController {
         dialog.setTitle("Confirm reservation");
         ButtonType type = new ButtonType("Done", ButtonBar.ButtonData.OK_DONE);
         dialog.setContentText("The librarian has received your reservation,\nyou are queuing now.\nThank you!");
-        dialog.getDialogPane().setStyle("-fx-font-size: 15px;" +
-                "-fx-font-family: Roboto ");
+        dialog.getDialogPane().setStyle(STYLE);
         dialog.getDialogPane().getButtonTypes().add(type);
         dialog.getDialogPane().getStylesheets().add(
                 Objects.requireNonNull(getClass().getResource(STYLESHEET)).toExternalForm());

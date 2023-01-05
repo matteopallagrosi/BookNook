@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 public class BookQueries {
 
+    private BookQueries() {}
+
     public static ResultSet getBooks(Connection connection, String title) throws SQLException {
         String query = "SELECT titolo,autore FROM libri where titolo LIKE ? or autore LIKE ?";
         PreparedStatement pstmt = connection.prepareStatement( query );
@@ -25,10 +27,10 @@ public class BookQueries {
     }
 
     //recupera tutti i tag di un certo libro
-    public static ResultSet getTags(Connection connection, String ISBN) throws SQLException {
+    public static ResultSet getTags(Connection connection, String isbn) throws SQLException {
         String query = "SELECT descrizione FROM libri JOIN tag_libri ON libri.ISBN = tag_libri.ISBN JOIN tag ON tag_libri.tag = tag.id  where libri.ISBN LIKE ?";
         PreparedStatement pstmt = connection.prepareStatement(query);
-        pstmt.setString( 1, ISBN);
+        pstmt.setString( 1, isbn);
         return pstmt.executeQuery();
     }
 
@@ -41,12 +43,12 @@ public class BookQueries {
         return pstmt.executeQuery();
     }
 
-    public static int insertBookInList(Connection connection, String reader, String listName, String ISBN) throws SQLException {
+    public static int insertBookInList(Connection connection, String reader, String listName, String isbn) throws SQLException {
         String query = "INSERT INTO liste_lettura (lettore, nome, ISBN) VALUES (?, ?,?)";
         PreparedStatement pstmt = connection.prepareStatement(query);
         pstmt.setString( 1, reader);
         pstmt.setString(2, listName);
-        pstmt.setString(3, ISBN);
+        pstmt.setString(3, isbn);
         return pstmt.executeUpdate();  //ritorna il numero di righe inserite
     }
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
-    private String ISBN;
+    private String isbn;
     private String title;
     private String author;
     private List<String> tags = new ArrayList<String>();
@@ -18,8 +18,8 @@ public class Book {
     public Book() {
 
     }
-    public Book(String ISBN){
-        this.ISBN = ISBN;
+    public Book(String isbn){
+        this.isbn = isbn;
 
     }
 
@@ -38,12 +38,12 @@ public class Book {
         this.author = author;
     }
 
-    public String getISBN() {
-        return this.ISBN;
+    public String getIsbn() {
+        return this.isbn;
     }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getAuthor() {

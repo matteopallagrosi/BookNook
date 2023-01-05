@@ -110,10 +110,10 @@ public class Library {
             }
 
             //verifica la disponibilità di copie del libro con l'ISBN richiesto presso la libreria
-            public boolean getAvailability(String ISBN) {
+            public boolean getAvailability(String isbn) {
                 for (int i=0; i<ownedCopies.size(); i++) {
                     BookCopy copy = ownedCopies.get(i);
-                    if (copy.getBook().getISBN().equals(ISBN) && copy.getState().equals(CopyState.AVAILABLE)) {
+                    if (copy.getBook().getIsbn().equals(isbn) && copy.getState().equals(CopyState.AVAILABLE)) {
                         return true;
                     }
                 }

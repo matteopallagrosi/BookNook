@@ -7,10 +7,12 @@ import java.sql.SQLException;
 
 public class LibraryQueries {
 
-    public static ResultSet getLibraries(Connection connection, String ISBN) throws SQLException {
+    private LibraryQueries() {}
+
+    public static ResultSet getLibraries(Connection connection, String isbn) throws SQLException {
         String query = "SELECT * FROM biblioteche JOIN copie ON biblioteca = username where ISBN LIKE ?";
         PreparedStatement pstmt = connection.prepareStatement( query );
-        pstmt.setString( 1, ISBN);
+        pstmt.setString( 1, isbn);
         return pstmt.executeQuery();
     }
 }

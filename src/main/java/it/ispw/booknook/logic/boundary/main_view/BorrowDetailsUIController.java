@@ -98,14 +98,14 @@ public class BorrowDetailsUIController extends UIController {
         AnchorPane.setBottomAnchor(mapView, 15.0);
 
         MenuItem defaultItem = new MenuItem("All");
-        defaultItem.setOnAction(CityFilterHandler(defaultItem.getText(), libraries));
+        defaultItem.setOnAction(cityFilterHandler(defaultItem.getText(), libraries));
         cityFilter.getItems().add(defaultItem);
         HashMap<String, MenuItem> items = new HashMap<>();
         for (int i = 0; i < libraries.size(); i++) {
             String city = libraries.get(i).getCity();
             if (items.get(city) == null) {
                 MenuItem item = new MenuItem(city);
-                item.setOnAction(CityFilterHandler(item.getText(), libraries));
+                item.setOnAction(cityFilterHandler(item.getText(), libraries));
                 items.put(city, item);
                 cityFilter.getItems().add(item);
             }
@@ -113,29 +113,26 @@ public class BorrowDetailsUIController extends UIController {
 
     }
 
-    private EventHandler<ActionEvent> CityFilterHandler(String selectedCity, List<LibraryBean> libraries) {
-        return new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                cityFilter.setText(selectedCity);
-                libraryList.getItems().clear();
-                //se l'utente preme "All" ricompare la lista completa
-                if (selectedCity.equals("All")) {
-                    ObservableList<LibraryBean> completeList = FXCollections.observableArrayList(libraries);
-                    libraryList.setItems(completeList);
-                }
-                //altrimenti mostra solo librerie della città selezionata
-                else {
-                    List<LibraryBean> newList = new ArrayList<>();
-                    for (int i = 0; i < libraries.size(); i++) {
-                        String city = libraries.get(i).getCity();
-                        if (city.equals(selectedCity)) {
-                            newList.add(libraries.get(i));
-                        }
+    private EventHandler<ActionEvent> cityFilterHandler(String selectedCity, List<LibraryBean> libraries) {
+        return actionEvent -> {
+            cityFilter.setText(selectedCity);
+            libraryList.getItems().clear();
+            //se l'utente preme "All" ricompare la lista completa
+            if (selectedCity.equals("All")) {
+                ObservableList<LibraryBean> completeList = FXCollections.observableArrayList(libraries);
+                libraryList.setItems(completeList);
+            }
+            //altrimenti mostra solo librerie della città selezionata
+            else {
+                List<LibraryBean> newList = new ArrayList<>();
+                for (int i = 0; i < libraries.size(); i++) {
+                    String city = libraries.get(i).getCity();
+                    if (city.equals(selectedCity)) {
+                        newList.add(libraries.get(i));
                     }
-                    ObservableList<LibraryBean> filteredList = FXCollections.observableArrayList(newList);
-                    libraryList.setItems(filteredList);
                 }
+                ObservableList<LibraryBean> filteredList = FXCollections.observableArrayList(newList);
+                libraryList.setItems(filteredList);
             }
         };
     }
