@@ -108,7 +108,7 @@
                 </AnchorPane>
             </left>
             <right>
-                <AnchorPane onMouseClicked="#onProfileClick" prefHeight="90.0" prefWidth="370.0" BorderPane.alignment="CENTER">
+                <AnchorPane prefHeight="90.0" prefWidth="370.0" BorderPane.alignment="CENTER">
                     <children>
                         <ImageView fx:id="profileBtn" fitHeight="60.0" fitWidth="60.0" layoutX="286.0" layoutY="18.0" onMouseClicked="#onProfileClick" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="18.0">
                             <image>

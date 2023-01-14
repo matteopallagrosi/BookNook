@@ -29,5 +29,17 @@ public class LoginController {
         return User.isLogged();
     }
 
+    public void updateUserEmail(LoginBean loginBean) {
+        if (verifyLogin()) {
+            User.getUser().setEmail(loginBean.getEmail());
+        }
+    }
+
+    public void updateUserPassword(LoginBean loginBean) {
+        if (verifyLogin()) {
+            User.getUser().setPassword(loginBean.getPassword());
+        }
+    }
+
 
 }

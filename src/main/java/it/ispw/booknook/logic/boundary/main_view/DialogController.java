@@ -1,10 +1,14 @@
 package it.ispw.booknook.logic.boundary.main_view;
 
+import it.ispw.booknook.logic.bean.LibraryBean;
 import it.ispw.booknook.logic.bean.LoginBean;
+import it.ispw.booknook.logic.control.BorrowBookController;
 import it.ispw.booknook.logic.control.LoginController;
+import it.ispw.booknook.logic.control.SettingsController;
 import it.ispw.booknook.logic.control.SignUpController;
 import it.ispw.booknook.logic.entity.User;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,7 +20,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 //opera come controller grafico per i dialog
-public class DialogController {
+public class DialogController extends UIController {
 
     private static final String LOGIN = "Login";
     private static final String SIGNUP = "Sign up";
@@ -121,7 +125,7 @@ public class DialogController {
         dialog.showAndWait();
     }
 
-    public void createBorrowDialog(ActionEvent actionEvent) {
+    public void createBorrowDialog(ActionEvent actionEvent, LibraryBean library) {
         String[] choices= {"In-library pickup", "Home delivery"};
         ChoiceDialog d = new ChoiceDialog(choices[0], choices);
         d.setTitle("Delivery method");
@@ -134,7 +138,7 @@ public class DialogController {
         Optional result =  d.showAndWait();
         //selezionato ritiro in libreria
         if (result.isPresent() && result.get().equals("In-library pickup")) {
-            createPickUpDialog();
+            createPickUpDialog(library);
         }
         //selezionata consegna a casa
         else if (result.isPresent() && result.get().equals("Home delivery")) {
@@ -152,7 +156,7 @@ public class DialogController {
         }
     }
 
-    private void createPickUpDialog() {
+    private void createPickUpDialog(LibraryBean library) {
         //result contiene la stringa In-libraryPickup o homedelivery
         //se homedelivery apre pagina metodo di consegna
         //se pickup informa sui tempi di ritiro
@@ -169,6 +173,11 @@ public class DialogController {
         Optional<ButtonType> result = dialogPickup.showAndWait();
         if (result.isPresent() && result.get() == confirm) {
             //conferma ordine con ritiro in libreria
+            //chiama il borrowBook controller
+            System.out.print("id: " + library.getIdCopyAvailable() + " Isbn: " + library.getIsbnAvailableBook() + "biblioteca: " + library.getUsername());
+            //aggiorna db e manda mail di conferma (delega il controller applicativo)
+            BorrowBookController borrowBookController = new BorrowBookController();
+            borrowBookController.borrowBook(library);
         }
     }
 
@@ -197,5 +206,41 @@ public class DialogController {
             root.requestFocus();
         }
 
+    }
+
+    public void createDeleteDialog(Event event) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Delete account");
+        alert.setHeaderText("Delete account");
+        alert.setContentText("By confirming you will lose all data associated with your account. Are you sure?");
+        ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("Confirm");
+        ButtonType cancel = new ButtonType(CANCEL, ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getDialogPane().getButtonTypes().add(cancel);
+        alert.getDialogPane().setStyle(STYLE);
+        alert.getDialogPane().getStylesheets().add(
+                Objects.requireNonNull(getClass().getResource(STYLESHEET)).toExternalForm());
+        alert.getDialogPane().setPrefWidth(300);
+        Optional result = alert.showAndWait();
+        if (result.isPresent()) {
+            if (result.get() == ButtonType.OK) {
+                SettingsController settingsController = new SettingsController();
+                settingsController.deleteAccount();
+                //apre dialog conferma
+                Dialog<String> dialog = new Dialog<>();
+                dialog.setTitle("Delete account");
+                dialog.setContentText("Account successfully deleted!");
+                ButtonType okButtonType = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+                dialog.getDialogPane().getButtonTypes().add(okButtonType);
+                Optional newResult = dialog.showAndWait();
+                if (newResult.isPresent() && newResult.get() == okButtonType) {
+                    //ritorno all'homePage
+                    try {
+                        changePage("/it/ispw/booknook/mainView/homepage-view.fxml", event);
+                    } catch(IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ClubsUIController implements Initializable {
+public class ClubsUIController extends UIController implements Initializable {
     @FXML
     private BorderPane currentPane;
 
@@ -47,7 +47,7 @@ public class ClubsUIController implements Initializable {
             logger.log(Level.INFO, "This is message 1", e);
         }
         currentPane.setCenter(topicPane);
-
+        setAvatar();
     }
 
     @FXML

@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,16 +15,22 @@ import javafx.scene.layout.AnchorPane;
 
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 
-public class ConsultationUIController extends UIController {
+public class ConsultationUIController extends UIController implements Initializable {
 
     private ObservableList<String> items;
 
     @FXML
     private AnchorPane listPane;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setAvatar();
+    }
 
     public void createListLibraries(ObservableList<String> items) {
         //compare la lista delle biblioteche con disponiilità
@@ -74,12 +81,11 @@ public class ConsultationUIController extends UIController {
 
     @FXML
     void onProfileClick(MouseEvent event) throws IOException {
-        changePage("/it/ispw/booknook/mainView/settings-view.fxml", event);
+        super.onProfileClick(event);
     }
 
     @FXML
     void onMyListClick(ActionEvent event) throws IOException {
         changePage("/it/ispw/booknook/mainView/myLists-view.fxml", event);
     }
-
 }

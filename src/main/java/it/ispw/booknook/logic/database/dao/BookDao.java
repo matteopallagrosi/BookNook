@@ -2,7 +2,11 @@ package it.ispw.booknook.logic.database.dao;
 
 import it.ispw.booknook.logic.database.BookNookDB;
 import it.ispw.booknook.logic.database.queries.BookQueries;
+import it.ispw.booknook.logic.database.queries.LogQueries;
 import it.ispw.booknook.logic.entity.Book;
+import it.ispw.booknook.logic.entity.BookCopy;
+import it.ispw.booknook.logic.entity.Library;
+import it.ispw.booknook.logic.entity.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -165,5 +169,156 @@ public class BookDao {
             e.printStackTrace();
         }
         return bookList;
+    }
+
+    public static void insertFavorites(String reader, String listName, String isbn) {
+        Connection conn = null;
+
+        BookNookDB db = BookNookDB.getInstance();
+        conn = db.getConn();
+
+        try {
+            BookQueries.insertBookInList(conn, reader, listName, isbn);
+
+        } catch(SQLException e) {
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Book>  getFavoriteBooks(String username, String listName) {
+        List<Book> list = new ArrayList<Book>();
+        Connection conn = null;
+        Book book;
+
+        BookNookDB db = BookNookDB.getInstance();
+        conn = db.getConn();
+        try {
+            ResultSet rs = BookQueries.getList(conn, username, listName);
+
+            if (!rs.first()){ // rs empty
+                throw new Exception("No List found matching with name");
+            }
+
+            rs.first();
+            book = new Book();
+            book.setIsbn(rs.getString("libri.ISBN"));
+            System.out.println(rs.getString("libri.ISBN"));
+            book.setTitle(rs.getString("titolo"));
+            book.setAuthor(rs.getString("autore"));
+            list.add(book);
+
+            //altrimenti libri presenti
+            while (rs.next()) {
+                book = new Book();
+                book.setIsbn(rs.getString("libri.ISBN"));
+                System.out.println(rs.getString("libri.ISBN"));
+                book.setTitle(rs.getString("titolo"));
+                book.setAuthor(rs.getString("autore"));
+                list.add(book);
+            }
+
+            rs.close();
+
+        } catch(SQLException e) {
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    //recupera le informazioni sui libri attualmente in prestito dell'utente
+    public static List<BookCopy>  getBooksOnLoan(String username) {
+        List<BookCopy> list = new ArrayList<BookCopy>();
+        Connection conn = null;
+
+        BookNookDB db = BookNookDB.getInstance();
+        conn = db.getConn();
+        try {
+            ResultSet rs = BookQueries.getLoanBooks(conn, username);
+
+            if (!rs.first()){ // rs empty
+                throw new Exception("No List found matching with username");
+            }
+
+            rs.first();
+            Book book = new Book();
+            book.setIsbn(rs.getString("libri.ISBN"));
+            book.setTitle(rs.getString("titolo"));
+            book.setAuthor(rs.getString("autore"));
+            BookCopy copy = new BookCopy();
+            copy.setLoanDate(rs.getDate("data_prestito"));
+            copy.setBook(book);
+            Library library = new Library();
+            library.setName(rs.getString("biblioteche.nome")); //biblioteca da cui è in prestito la copia
+            copy.setLibrary(library);
+            list.add(copy); //lista di copie in prestito al lettore
+
+            //altrimenti libri presenti
+            while (rs.next()) {
+                book = new Book();
+                book.setIsbn(rs.getString("libri.ISBN"));
+                book.setTitle(rs.getString("titolo"));
+                book.setAuthor(rs.getString("autore"));
+                copy = new BookCopy();
+                copy.setLoanDate(rs.getDate("data_prestito"));
+                copy.setBook(book);
+                library = new Library();
+                library.setName(rs.getString("biblioteche.nome")); //biblioteca da cui è in prestito la copia
+                copy.setLibrary(library);
+                list.add(copy); //lista di copie in prestito al lettore
+            }
+
+            rs.close();
+
+        } catch(SQLException e) {
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public static boolean getListByISBN(String username, String isbn) {
+        Connection conn = null;
+
+        BookNookDB db = BookNookDB.getInstance();
+        conn = db.getConn();
+        boolean state = false;
+        try {
+            ResultSet rs = BookQueries.getBookInList(conn, username, isbn);
+
+            state = rs.first();
+
+            rs.close();
+
+        } catch(SQLException e) {
+            Logger logger = Logger.getLogger("MyLog");
+            logger.log(Level.INFO, "This is message 1", e);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return state;
+    }
+
+    public static void deleteBookFromList(String username, String isbn) {
+        Connection conn = null;
+
+        BookNookDB db = BookNookDB.getInstance();
+        conn = db.getConn();
+
+        try {
+            BookQueries.removeBookFromList(conn, username, isbn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

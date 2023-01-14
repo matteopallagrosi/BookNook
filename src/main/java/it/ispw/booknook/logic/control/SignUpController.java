@@ -11,8 +11,8 @@ public class SignUpController {
     public void registerReader(LoginBean loginBean) {
         User reader = User.getUser();
         reader.setLogDetails(loginBean.getUsername(), loginBean.getEmail(), BCrypt.withDefaults().hashToString(12, loginBean.getPassword().toCharArray()), UserType.READER);
-
+        reader.setImageProfile("C:\\Users\\HP\\IdeaProjects\\BookNook\\src\\main\\resources\\it\\ispw\\booknook\\mainView\\account_circle_24dp.png");
         ReaderUserDao.registerReaderUser(reader);
-    }
 
+    }
 }

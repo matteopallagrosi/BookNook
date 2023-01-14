@@ -1,17 +1,32 @@
 package it.ispw.booknook.logic.bean;
 
+import it.ispw.booknook.logic.Subject;
 import it.ispw.booknook.logic.entity.Book;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
-public class BookBean {
+public class BookBean extends Subject {
     private String isbn;
     private String title;
     private String author;
     private List<String> tags;
     private String cover;
-    private Image coverImage;
+    private Image coverImage = new Image("C:\\Users\\HP\\IdeaProjects\\BookNook\\src\\main\\resources\\it\\ispw\\booknook\\mainView\\product-not-found.png");
+    //questa bean è usata anche per tenere traccia delle informazioni sulla copia
+    private String loanDate;
+    private String expireDate;
+    private String libraryName;
+    private boolean isAddedtoList;
+    private ImageView viewToUpdate;
+
+    public void setViewToUpdate(ImageView view) {
+        this.viewToUpdate = view;
+    }
 
 
     public BookBean() {}
@@ -59,8 +74,12 @@ public class BookBean {
 
     public void setCover(String cover) {
         this.cover = cover;
+        this.coverImage = new Image(cover);
+        notifyObservers();
+        if (viewToUpdate != null) {
+            viewToUpdate.setImage(coverImage);
+        }
     }
-
 
     public String getIsbn() {
         return isbn;
@@ -88,5 +107,41 @@ public class BookBean {
         String[] strings = details.split(", ");
         this.title = strings[0];
         this.author = strings[1];
+    }
+
+    public String getLoanDate() {
+        return loanDate; //ritorna la data come stringa
+    }
+
+    public void setLoanDate(Date loanDate) {
+        this.loanDate = loanDate.toString();  //converte la data in stringa
+        setExpireDate(loanDate); //setta anche la data di restituzione
+    }
+
+    public String getExpireDate() {
+        return expireDate;
+    }
+
+    public void setExpireDate(Date loanDate) {
+        //aggiunge un mese alla data di prestito
+       LocalDate expire = loanDate.toLocalDate().plusMonths(1);
+       //riconverte la data di restituzione in Stringa
+       this.expireDate = java.sql.Date.valueOf(expire).toString();
+    }
+
+    public String getLibraryName() {
+        return libraryName;
+    }
+
+    public void setLibraryName(String libraryName) {
+        this.libraryName = libraryName;
+    }
+
+    public boolean isAddedtoList() {
+        return isAddedtoList;
+    }
+
+    public void setAddedtoList(boolean addedtoList) {
+        isAddedtoList = addedtoList;
     }
 }

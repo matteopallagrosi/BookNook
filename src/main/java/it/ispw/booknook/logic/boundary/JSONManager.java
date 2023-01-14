@@ -1,5 +1,6 @@
 package it.ispw.booknook.logic.boundary;
 
+import it.ispw.booknook.logic.bean.BookBean;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,11 +14,22 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class JSONManager {
+public class JSONManager implements Runnable {
 
-    private JSONManager() {}
+    private BookBean book;
 
-    public static JSONObject getJsonFromUrl(String isbn) {
+    public JSONManager(BookBean book) {
+        this.book = book;
+    }
+
+    @Override
+    public void run() {
+        JSONObject bookJson = getJsonFromUrl();
+        String url = getImageURL(bookJson);
+        book.setCover(url);
+    }
+
+    public JSONObject getJsonFromUrl() {
         Properties properties = new Properties();
         String k = null;
         try (FileInputStream f = new FileInputStream("C:\\Users\\HP\\IdeaProjects\\BookNook\\src\\main\\resources\\googleconfig.properties")) {
@@ -27,7 +39,7 @@ public class JSONManager {
             Logger logger = Logger.getLogger("MyLog");
             logger.log(Level.INFO, "This is message 1", e);
         }
-        String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn + "&key=" + k;
+        String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + book.getIsbn() + "&key=" + k;
         JSONObject myResponse = null;
         try {
             URL url = new URL(urlString);
@@ -50,7 +62,7 @@ public class JSONManager {
         return myResponse;
     }
 
-    public static String getImageURL(JSONObject book){
+    public String getImageURL(JSONObject book){
         String thumbnail = null;
         try {
             JSONArray itemsObject = book.getJSONArray("items");
@@ -65,6 +77,4 @@ public class JSONManager {
 
         return thumbnail;
     }
-
-
 }

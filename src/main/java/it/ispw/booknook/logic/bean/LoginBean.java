@@ -1,15 +1,27 @@
 package it.ispw.booknook.logic.bean;
 
+import it.ispw.booknook.logic.Observer;
+import it.ispw.booknook.logic.entity.User;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginBean {
+public class LoginBean extends Observer {
 
     private String username;
     private String email;
     private String password;
+    private String firstName;
+    private String lastName;
+    private Image profileImage;
+    private ImageView avatar;
+    private String address;
+    private String city;
+    private String zip;
+    private String country;
 
     public LoginBean() {}
 
@@ -77,4 +89,89 @@ public class LoginBean {
 
         return matcher.matches();
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Image getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+            this.profileImage = new Image(profileImage);
+
+    }
+
+    public void setImage(Image image) {
+        this.profileImage = image;
+    }
+
+    public String getImageUrl() {
+        return profileImage.getUrl();
+    }
+
+    public ImageView getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatarImage(ImageView avatar) {
+        this.avatar = avatar;
+        //il bean si registra come observer dell'istanza di User
+        //in modo da aggiornare l'imageView quando lo User cambia stato (cambia immagine profilo)
+        User.getUser().attach(this);
+    }
+
+    @Override
+    public void update() {
+        //recupera la nuovaImmagineProfilo
+        String newImageUrl = User.getUser().getImageProfile();
+        Image newImageProfile = new Image(newImageUrl);
+        avatar.setImage(newImageProfile);
+    }
+
 }

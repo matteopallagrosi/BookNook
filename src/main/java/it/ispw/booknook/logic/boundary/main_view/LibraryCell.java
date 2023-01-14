@@ -32,10 +32,9 @@ public class LibraryCell {
         {
             throw new RuntimeException(e);
         }
-        setBtnHandler();
     }
 
-    private void setBtnHandler() {
+    private void setBtnHandler(LibraryBean library) {
         borrowBtn.setOnAction(actionEvent -> {
             DialogController dialogController = new DialogController();
             //verifica se l'utente è loggato oppure no
@@ -47,7 +46,9 @@ public class LibraryCell {
             }
 
             if (loginController.verifyLogin() && borrowBtn.getText().equals("Borrow")) {
-                dialogController.createBorrowDialog(actionEvent);
+                dialogController.createBorrowDialog(actionEvent, library);
+
+
             }
             else if(loginController.verifyLogin() && borrowBtn.getText().equals("Reserve")) {
                 //apre dialog per avvenuta reservation e notifica alla biblioteca
@@ -66,6 +67,8 @@ public class LibraryCell {
         else {
             borrowBtn.setText("Reserve");
         }
+
+        setBtnHandler(library);
     }
 
     public AnchorPane getCell()

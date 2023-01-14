@@ -51,8 +51,38 @@ public class BookQueries {
         pstmt.setString(3, isbn);
         return pstmt.executeUpdate();  //ritorna il numero di righe inserite
     }
+    //per le liste want to read e books i liked
+    public static ResultSet getList(Connection connection, String username, String listName) throws SQLException{
+        String query= "SELECT * FROM liste_lettura JOIN libri ON liste_lettura.ISBN = libri.ISBN WHERE lettore LIKE ? AND nome LIKE ? ";
+        PreparedStatement pstmt = connection.prepareStatement(query);
+        pstmt.setString( 1, username);
+        pstmt.setString(2, listName);
+        return pstmt.executeQuery();
+    }
 
 
+    //per la lista books on Loan
+    public static ResultSet getLoanBooks(Connection connection, String username) throws SQLException{
+        String query= "SELECT * FROM liste_lettura JOIN libri ON liste_lettura.ISBN = libri.ISBN JOIN copie ON libri.ISBN = copie.ISBN JOIN biblioteche ON copie.biblioteca = biblioteche.username WHERE prestito_lettore LIKE ? AND lettore LIKE ? AND liste_lettura.nome LIKE 'Books on loan'";
+        PreparedStatement pstmt = connection.prepareStatement(query);
+        pstmt.setString( 1, username);
+        pstmt.setString( 2, username);
+        return pstmt.executeQuery();
+    }
 
+    public static ResultSet getBookInList(Connection connection, String username, String isbn) throws SQLException{
+        String query= "SELECT * FROM liste_lettura WHERE lettore LIKE ? AND ISBN LIKE ? AND nome <> 'Books on loan'";
+        PreparedStatement pstmt = connection.prepareStatement(query);
+        pstmt.setString( 1, username);
+        pstmt.setString( 2, isbn);
+        return pstmt.executeQuery();
+    }
 
+    public static int removeBookFromList(Connection connection, String username, String isbn) throws SQLException{
+        String query= "DELETE FROM liste_lettura WHERE lettore = ? AND ISBN = ? AND nome <> 'Books on loan'";
+        PreparedStatement pstmt = connection.prepareStatement(query);
+        pstmt.setString( 1, username);
+        pstmt.setString( 2, isbn);
+        return pstmt.executeUpdate();
+    }
 }

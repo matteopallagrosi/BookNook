@@ -57,6 +57,7 @@ public class BorrowDetailsUIController extends UIController {
 
 
     public void displayLibraryList(String isbn, String title) {
+        setAvatar();
         introLabel.setText("'" + title + "' is available in the following libraries.");
         MapViewer mapViewer = new MapViewer();
 
@@ -64,6 +65,7 @@ public class BorrowDetailsUIController extends UIController {
         BorrowBookController controller = new BorrowBookController();
         BookBean book = new BookBean();
         book.setIsbn(isbn);
+        //recupera la lista di librerie con disponibilità (borrow/reserve) della copia
         List<LibraryBean> libraries = controller.calculateLibraries(book);
 
         ObservableList<LibraryBean> observableList = FXCollections.observableArrayList(libraries);

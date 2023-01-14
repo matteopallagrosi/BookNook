@@ -2,13 +2,11 @@ package it.ispw.booknook.logic.control;
 
 import it.ispw.booknook.logic.bean.BookBean;
 import it.ispw.booknook.logic.bean.LibraryBean;
+import it.ispw.booknook.logic.boundary.GMailer;
 import it.ispw.booknook.logic.boundary.JSONManager;
 import it.ispw.booknook.logic.database.dao.BookDao;
 import it.ispw.booknook.logic.database.dao.LibraryDao;
-import it.ispw.booknook.logic.entity.Book;
-import it.ispw.booknook.logic.entity.Library;
-import javafx.scene.image.Image;
-import org.json.JSONObject;
+import it.ispw.booknook.logic.entity.*;
 
 import java.util.*;
 
@@ -41,10 +39,15 @@ public class BorrowBookController {
 
         related.forEach(bookBean1 -> {
             bookBean1.setTags(BookDao.getTagsByISBN(bookBean1.getIsbn()));
-            JSONObject myResponse = JSONManager.getJsonFromUrl(bookBean1.getIsbn());
-            String url = JSONManager.getImageURL(myResponse);
-            bookBean1.setCover(url);
-            bookBean1.setCoverImage(new Image(url));
+            JSONManager jsonManager = new JSONManager(bookBean1);
+            Thread t1 = new Thread(jsonManager);
+            t1.start();
+            //se l'utente è loggato deve scoprire quali libri sono stati aggiunti ad una qualche lista
+            if (new LoginController().verifyLogin()) {
+                String username = User.getUser().getUsername();
+                String isbn = bookBean1.getIsbn();
+                bookBean1.setAddedtoList(BookDao.getListByISBN(username, isbn));
+            }
         });
 
         return related;
@@ -123,13 +126,48 @@ public class BorrowBookController {
         List<LibraryBean> libraryList = new ArrayList<LibraryBean>();
         libraries.forEach((name, library) -> {
             LibraryBean bean = new LibraryBean(library);
+            //setta "availability" a true se almeno uno copia è disponibile
             bean.setAvailability(library.getAvailability(book.getIsbn()));
+            if (bean.isAvailable()) {
+                library.getOwnedCopies().forEach(copy -> {
+                    //recuper l'id di una copia disponibile
+                    if (copy.getState() == CopyState.AVAILABLE) {
+                        bean.setIdCopyAvailable(copy.getId());
+                        bean.setIsbnAvailableBook(book.getIsbn());
+                    }
+                });
+            }
             libraryList.add(bean);
             /* library.getOwnedCopies().forEach(copy-> System.out.println("copia: "+ copy.getId() + "della bilbioteca " + copy.getLibrary().getName()));
             System.out.println(library.getAvailability(book.getIsbn())); */
         });
 
         return libraryList;
+    }
+
+    public void borrowBook(LibraryBean libraryDetails) {
+        BookCopy copyToBorrow = new BookCopy();
+        Book book = new Book();
+        Library library = new Library();
+        book.setIsbn(libraryDetails.getIsbnAvailableBook());
+        library.setUsername(libraryDetails.getUsername());
+        copyToBorrow.setId(libraryDetails.getIdCopyAvailable());
+        copyToBorrow.setBook(book);
+        copyToBorrow.setLibrary(library);
+        LibraryDao.setCopyOnLoan(copyToBorrow);
+        //manda mail di conferma dell'ordine a utente e bibliotecario
+        /*try {
+            new GMailer().sendEmail("A new message", """
+                    Dear reader,
+                    
+                    Hello World.
+                    
+                    Best regards,
+                    myself.
+                    """);
+        } catch(Exception e) {
+            e.printStackTrace();
+        } */
     }
 
 

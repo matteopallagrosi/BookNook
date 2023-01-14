@@ -29,6 +29,7 @@ public class ConsultationDetailsUIController extends UIController implements Ini
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setAvatar();
 
         datePicker.setStyle("-fx-focus-color: transparent;");
         datePicker.setDayCellFactory(p -> new DateCell() {

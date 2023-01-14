@@ -1,16 +1,27 @@
 package it.ispw.booknook.logic.boundary.main_view;
 
-import it.ispw.booknook.logic.entity.Book;
+import it.ispw.booknook.logic.Observer;
+import it.ispw.booknook.logic.bean.BookBean;
+import it.ispw.booknook.logic.control.ReadingListController;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class FavoritesCell {
+public class FavoritesCell extends Observer {
 
     @FXML
     private AnchorPane cell;
@@ -22,7 +33,28 @@ public class FavoritesCell {
     private Label author;
 
     @FXML
-    private Label expireData;
+    private Label expireDate;
+
+    @FXML
+    private ImageView cover;
+
+    @FXML
+    private Label toBeReturned;
+
+    @FXML
+    private Label libraryName;
+
+    @FXML
+    private Button removeBtn;
+
+    @FXML
+    private Label fromLabel;
+
+    @FXML
+    private Button borrowBtn;
+
+    private BookBean currentBook;
+
 
 
 
@@ -37,11 +69,40 @@ public class FavoritesCell {
         }
     }
 
-    public void setInfo(Book book)
+    public void setInfo(BookBean book)
     {
+        currentBook = book;
         title.setText(book.getTitle());
         author.setText(book.getAuthor());
-        expireData.setText(book.expireData);
+        cover.setImage(book.getCoverImage());
+        if (book.getExpireDate() != null) {
+            expireDate.setText(book.getExpireDate());
+            toBeReturned.setVisible(true);
+            libraryName.setText(book.getLibraryName());
+            removeBtn.setDisable(true);
+            removeBtn.setVisible(false);
+            borrowBtn.setDisable(true);
+            borrowBtn.setVisible(false);
+            fromLabel.setVisible(true);
+        }
+
+        borrowBtn.setOnAction(new EventHandler<>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/ispw/booknook/mainView/borrowdetails-view.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                BorrowDetailsUIController controller = loader.getController();
+                controller.displayLibraryList(book.getIsbn(), book.getTitle());
+                Scene scene = ((Node) (actionEvent.getSource())).getScene();
+                scene.setRoot(root);
+                root.requestFocus();
+            }
+        });
     }
 
     public AnchorPane getCell()
@@ -49,6 +110,9 @@ public class FavoritesCell {
         return cell;
     }
 
-
-
+    //quando è stata scaricata l'immagine di copertina la cella viene aggiornata
+    @Override
+    public void update() {
+        cover.setImage(currentBook.getCoverImage());
+    }
 }

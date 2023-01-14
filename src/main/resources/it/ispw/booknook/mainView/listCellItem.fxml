@@ -22,7 +22,7 @@
             </font>
         </Label>
         <Button fx:id="borrowBtn" layoutX="421.0" layoutY="34.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" stylesheets="@buttonYellow.css" text="Borrow" />
-      <MenuButton fx:id="addToListBtn" layoutX="420.0" layoutY="70.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" stylesheets="@menuButton.css" text="Add to list" />
+      <MenuButton fx:id="addToListBtn" layoutX="420.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" stylesheets="@menuButton.css" text="Add to list" />
       <FlowPane fx:id="box" hgap="10.0" layoutX="89.0" layoutY="57.0" maxHeight="84.0" maxWidth="312.0" prefHeight="84.0" prefWidth="312.0" vgap="10.0" />
     </children>
 </AnchorPane>

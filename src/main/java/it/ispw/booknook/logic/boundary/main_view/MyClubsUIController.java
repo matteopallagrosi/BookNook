@@ -11,13 +11,14 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class MyClubsUIController implements Initializable {
+public class MyClubsUIController extends UIController implements Initializable {
 
     @FXML
     private ListView<Club> clubsList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setAvatar();
         setListView();
     }
 

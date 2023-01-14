@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Library {
 
+        private String username;
         private String name;
         private String address;
         private Time openingTime;
@@ -19,7 +20,15 @@ public class Library {
 
         public Library(){}
 
-        public Library(String name) {
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Library(String name) {
             this.name = name;
         }
 

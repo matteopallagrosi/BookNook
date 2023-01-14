@@ -1,16 +1,23 @@
 package it.ispw.booknook.logic.entity;
 
 
+import it.ispw.booknook.logic.Subject;
+
 //Singleton
-public class User {
+public class User extends Subject {
 
     private static User user = null;
     private String username;
     private String email;
     private String password;
-    private String name;
-    private String surname;
+    private String firstName;
+    private String lastName;
     private UserType type;
+    private String imageProfile;
+    private String address;
+    private String city;
+    private String zip;
+    private String country;
 
     private User() {}
 
@@ -19,6 +26,8 @@ public class User {
             User.user = new User();
         return user;
     }
+
+
 
     public void setLogDetails(String username, String email, String password,UserType type) {
         setUsername(username);
@@ -51,20 +60,52 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public UserType getType() {
@@ -77,5 +118,19 @@ public class User {
 
     public static boolean isLogged() {
         return user != null;
+    }
+
+    public String getImageProfile() {
+        return imageProfile;
+    }
+
+    public void setImageProfile(String imageProfile) {
+        this.imageProfile = imageProfile;
+        //notifica del cambiamento/inizializzazione immagine profilo
+        notifyObservers();
+    }
+
+    public static void deleteUser() {
+       user = null;
     }
 }

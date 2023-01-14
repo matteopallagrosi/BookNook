@@ -1,13 +1,11 @@
 package it.ispw.booknook.logic.boundary.main_view;
 
+import it.ispw.booknook.logic.bean.LoginBean;
+import it.ispw.booknook.logic.entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -16,12 +14,12 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SettingsUIController extends UIController implements Initializable {
+
     @FXML
     private BorderPane currentSettingsPane;
 
@@ -34,6 +32,9 @@ public class SettingsUIController extends UIController implements Initializable 
     @FXML
     private Rectangle deleteBtn;
 
+    LoginBean profileDetails;
+
+
 
 
     @Override
@@ -45,6 +46,12 @@ public class SettingsUIController extends UIController implements Initializable 
             Logger logger = Logger.getLogger("MyLog");
             logger.log(Level.INFO, "This is message 1", e);
         }
+        //carica i dati (quelli presenti) dell'utente
+        setAvatar();
+        profileDetails = new LoginBean();
+        //passa al bean il riferimento all'immage view, il bean viene notificato
+        //del cambiamento dell'immagine profilo e la cambia
+        profileDetails.setAvatarImage(profileBtn);
     }
 
     @FXML
@@ -53,7 +60,6 @@ public class SettingsUIController extends UIController implements Initializable 
         profSettingsBtn.setFill(Color.web("#8a8a8a66"));
         AnchorPane accountPane = FXMLLoader.load(getClass().getResource("/it/ispw/booknook/mainView/accountsettings-view.fxml"));
         currentSettingsPane.setCenter(accountPane);
-
     }
 
     @FXML
@@ -71,31 +77,8 @@ public class SettingsUIController extends UIController implements Initializable 
 
     @FXML
     void onDeleteClick(MouseEvent event) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Delete account");
-        alert.setHeaderText("Delete account");
-        alert.setContentText("By confirming you will lose all data associated with your account. Are you sure?");
-        ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("Confirm");
-        ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getDialogPane().getButtonTypes().add(cancel);
-        ButtonBar buttonBar = (ButtonBar)alert.getDialogPane().lookup(".button-bar");
-        alert.getDialogPane().setStyle("-fx-font-size: 15px;" +
-                "-fx-font-family: Roboto ");
-        buttonBar.getButtons().forEach(b -> b.setStyle("-fx-background-color: #e9bf8e;" +
-                "-fx-background-radius: 8;" +
-                "-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" +
-                "-fx-text-fill: white;" +
-                "-fx-font-family: 'Roboto Medium'"));
-        alert.getDialogPane().setPrefWidth(300);
-        Optional result = alert.showAndWait();
-        if (result.isPresent()) {
-            if (result.get() == ButtonType.OK) {
-                System.out.println("Confermato");
-            }
-            else {
-                System.out.println("Annullato");
-            }
-        }
+        DialogController controller = new DialogController();
+        controller.createDeleteDialog(event);
     }
 
     @FXML
@@ -112,5 +95,7 @@ public class SettingsUIController extends UIController implements Initializable 
     void onMyListClick(ActionEvent event) throws IOException {
         changePage("/it/ispw/booknook/mainView/myLists-view.fxml", event);
     }
+
+
 
 }

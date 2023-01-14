@@ -66,9 +66,8 @@
                               <Font name="Roboto Medium" size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="616.0" layoutY="90.0" prefHeight="101.0" prefWidth="154.0" text="quando aggiungiamo un libro alla lista dovremmo cambiare il bottone &quot;Add to list&quot; con &quot;added&quot;" wrapText="true" />
                         <FlowPane fx:id="box" hgap="10.0" layoutX="316.0" layoutY="94.0" maxHeight="90.0" maxWidth="208.0" prefHeight="90.0" prefWidth="197.0" vgap="10.0" />
-                        <MenuButton fx:id="listBtn" layoutX="525.0" layoutY="153.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" stylesheets="@menuButton.css" text="Add to list" />
+                        <MenuButton fx:id="listBtn" layoutX="525.0" layoutY="153.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 2);" stylesheets="@menuButton.css" text="Add to list" />
                      </children>
                      <opaqueInsets>
                         <Insets />

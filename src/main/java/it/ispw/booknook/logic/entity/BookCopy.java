@@ -1,10 +1,13 @@
 package it.ispw.booknook.logic.entity;
 
+import java.sql.Date;
+
 public class BookCopy {
     private int id;
-    private Library library;
+    private Library library;  //la biblioteca che possiede la copia
     private CopyState state;
-    private Book book;
+    private Book book;  //il libro di cui è copia
+    private Date loanDate;
 
     public int getId() {
         return id;
@@ -43,6 +46,11 @@ public class BookCopy {
         this.book = book;
     }
 
+    public Date getLoanDate() {
+        return loanDate;
+    }
 
-
+    public void setLoanDate(Date loanDate) {
+        this.loanDate = loanDate;
+    }
 }

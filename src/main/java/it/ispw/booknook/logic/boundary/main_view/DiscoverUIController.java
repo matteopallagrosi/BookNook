@@ -2,6 +2,7 @@ package it.ispw.booknook.logic.boundary.main_view;
 
 import it.ispw.booknook.logic.bean.BookBean;
 import it.ispw.booknook.logic.control.BorrowBookController;
+import it.ispw.booknook.logic.entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -58,7 +59,7 @@ public class DiscoverUIController extends UIController implements Initializable 
                 e.printStackTrace();
             }
         });
-
+        setAvatar();
     }
 
 
@@ -69,13 +70,13 @@ public class DiscoverUIController extends UIController implements Initializable 
 
     @FXML
     void onProfileClick(MouseEvent event) throws IOException {
-        changePage("/it/ispw/booknook/mainView/settings-view.fxml", event);
+        super.onProfileClick(event);
     }
 
 
     @FXML
     void onMyListClick(ActionEvent event) throws IOException {
-        changePage("/it/ispw/booknook/mainView/myLists-view.fxml", event);
+        super.onMyListsClick(event);
 
     }
 
